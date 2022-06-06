@@ -31,21 +31,33 @@ export const styles = StyleSheet.create({
 		marginHorizontal: 10,
 		marginTop: 10,
 	},
-	deleteButton: { backgroundColor: 'red', padding: 10 },
+
+	deleteButton: {
+		backgroundColor: 'red',
+		padding: 10,
+		alignSelf: 'flex-end',
+		marginRight: 10,
+	},
+
 	deleteButtonText: { color: 'white', fontSize: 14, fontWeight: 'bold' },
-	modalContent: { flex: 1, backgroundColor: '#fff', alignItems: 'center' },
-	modalTittleContainer: {
-		flexDirection: 'row',
-		justifyContent: 'space-evenly',
+
+	modalContent: { flex: 1, backgroundColor: '#fff', paddingTop: 100 },
+
+	modalDeleteButtonContainer: {
+		flexDirection: 'column',
+		justifyContent: 'flex-end',
 		alignItems: 'center',
 	},
+
 	modalTittle: { fontSize: 18, fontWeight: 'bold', marginVertical: 15 },
+
 	modalConfirmation: {
 		marginBottom: 12,
 		fontSize: 18,
 		fontWeight: 'bold',
 		textAlign: 'center',
 	},
+
 	modalConfirmationItem: {
 		marginBottom: 12,
 		fontSize: 15,

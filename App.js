@@ -58,50 +58,49 @@ export default function App() {
 	const keyExtractor = (item) => item.id.toString();
 
 	return (
-		<>
-			{/* <LoginContainer /> */}
-			<HomeContainer />
-		</>
-		// <View style={styles.container}>
-		// 	<View style={styles.content}>
-		// 		<TextInput
-		// 			placeholder='new task'
-		// 			style={styles.input}
-		// 			placeholderTextColor='red'
-		// 			value={text}
-		// 			onChangeText={(text) => handleChangeText(text)}
-		// 		/>
-		// 		<Button title='ADD' onPress={addItem} />
-		// 	</View>
+		// <>
+		// 	{/* <LoginContainer /> */}
+		// 	<HomeContainer />
+		// </>
+		<View style={styles.container}>
+			<View style={styles.content}>
+				<TextInput
+					placeholder='new task'
+					style={styles.input}
+					placeholderTextColor='red'
+					value={text}
+					onChangeText={(text) => handleChangeText(text)}
+				/>
+				<Button title='ADD' onPress={addItem} />
+			</View>
 
-		// 	<FlatList
-		// 		style={styles.containerList}
-		// 		data={list}
-		// 		renderItem={renderItem}
-		// 		keyExtractor={keyExtractor}
-		// 	/>
-		// 	<Modal
-		// 		animationType='slide'
-		// 		visible={modalVisible}
-		// 		onRequestClose={() => null}>
-		// 		<View style={styles.Content}>
-		// 			<View style={styles.modalTittleContainer}>
-		// 				<Text style={styles.modalTittle}>Delete button</Text>
-		// 				<TouchableOpacity
-		// 					style={styles.deleteButton}
-		// 					onPress={() => setModalVisible(!modalVisible)}>
-		// 					<Text style={styles.deleteButtonText}>X</Text>
-		// 				</TouchableOpacity>
-		// 			</View>
-		// 			<Text style={styles.modalConfirmation}>Are you sure?</Text>
-		// 			<Text style={styles.modalConfirmationItem}>{itemSelected.value}</Text>
-		// 			<Button
-		// 				onPress={() => onHandlerDelete(itemSelected.id)}
-		// 				title='OK'
-		// 				color='blue'
-		// 			/>
-		// 		</View>
-		// 	</Modal>
-		// </View>
+			<FlatList
+				style={styles.containerList}
+				data={list}
+				renderItem={renderItem}
+				keyExtractor={keyExtractor}
+			/>
+			<Modal
+				animationType='slide'
+				visible={modalVisible}
+				onRequestClose={() => null}>
+				<View style={styles.modalContent}>
+					<View style={styles.modalDeleteButtonContainer}>
+						<TouchableOpacity
+							style={styles.deleteButton}
+							onPress={() => setModalVisible(!modalVisible)}>
+							<Text style={styles.deleteButtonText}>X</Text>
+						</TouchableOpacity>
+					</View>
+					<Text style={styles.modalConfirmation}>Are you sure?</Text>
+					<Text style={styles.modalConfirmationItem}>{itemSelected.value}</Text>
+					<Button
+						onPress={() => onHandlerDelete(itemSelected.id)}
+						title='OK'
+						color='blue'
+					/>
+				</View>
+			</Modal>
+		</View>
 	);
 }
