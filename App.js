@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 
+import CartContainer from './src/Containers/CartContainer';
 import HomeContainer from './src/Containers/HomeContainer/index';
 import LoginContainer from './src/Containers/LoginContainer/index';
 import { styles } from './styles';
@@ -61,6 +62,7 @@ export default function App() {
 		<>
 			{/* <LoginContainer /> */}
 			<HomeContainer />
+			{/* <CartContainer /> */}
 		</>
 		// <View style={styles.container}>
 		// 	<View style={styles.content}>

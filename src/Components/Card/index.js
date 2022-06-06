@@ -1,9 +1,11 @@
 import { Image, Text, View } from 'react-native';
 
+import Counter from '../Counter';
 import React from 'react';
+import StyledButton from './../StyledButton/index';
 import { styles } from './styles';
 
-const Card = ({ product }) => {
+const Card = ({ product, order, setOrder }) => {
 	const { name, description, variety, img, price } = product;
 
 	const imageSrc = img
@@ -17,6 +19,7 @@ const Card = ({ product }) => {
 			<Text>{description}</Text>
 			<Text>{variety}</Text>
 			<Text>{price}</Text>
+			<Counter order={order} setOrder={setOrder} product={product} />
 		</View>
 	);
 };
