@@ -1,5 +1,6 @@
 export const Products = [
 	{
+		id: '1',
 		name: 'Pack 8 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Mix',
@@ -7,6 +8,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '2',
 		name: 'Pack 8 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Garbanzo y calabacín',
@@ -14,6 +16,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '3',
 		name: 'Pack 8 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Lenteja y tomate',
@@ -21,6 +24,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '4',
 		name: 'Pack 8 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Remolacha y arroz yamaní',
@@ -28,6 +32,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '5',
 		name: 'Pack 8 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Poroto negro y arroz yamaní',
@@ -35,6 +40,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '6',
 		name: 'Pack 6 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Mix',
@@ -42,6 +48,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '7',
 		name: 'Pack 6 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Garbanzo y calabacín',
@@ -49,6 +56,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '8',
 		name: 'Pack 6 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Lenteja y tomate',
@@ -56,6 +64,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '9',
 		name: 'Pack 6 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Remolacha y arroz yamaní',
@@ -63,6 +72,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '10',
 		name: 'Pack 6 unidades',
 		description: 'Esto es la descripción',
 		variety: 'Poroto negro y arroz yamaní',
@@ -70,6 +80,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '11',
 		name: 'Falafel x kg',
 		description: 'Venta a granel, cantidad mínima: medio kg.',
 		variety: 'Vegano',
@@ -77,6 +88,7 @@ export const Products = [
 		img: 'imagenEjemplo.png',
 	},
 	{
+		id: '12',
 		name: 'Milanesas de berenjena x kg',
 		description: 'Venta a granel, cantidad mínima: 4 unidades.',
 		variety: 'Vegano',

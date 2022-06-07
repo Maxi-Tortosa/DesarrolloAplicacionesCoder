@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 
+import CartContainer from './src/Containers/CartContainer';
 import HomeContainer from './src/Containers/HomeContainer/index';
 import LoginContainer from './src/Containers/LoginContainer/index';
 import { styles } from './styles';
@@ -58,6 +59,7 @@ export default function App() {
 	const keyExtractor = (item) => item.id.toString();
 
 	return (
+<<<<<<< HEAD
 		// <>
 		// 	{/* <LoginContainer /> */}
 		// 	<HomeContainer />
@@ -73,6 +75,24 @@ export default function App() {
 				/>
 				<Button title='ADD' onPress={addItem} />
 			</View>
+=======
+		<>
+			{/* <LoginContainer /> */}
+			<HomeContainer />
+			{/* <CartContainer /> */}
+		</>
+		// <View style={styles.container}>
+		// 	<View style={styles.content}>
+		// 		<TextInput
+		// 			placeholder='new task'
+		// 			style={styles.input}
+		// 			placeholderTextColor='red'
+		// 			value={text}
+		// 			onChangeText={(text) => handleChangeText(text)}
+		// 		/>
+		// 		<Button title='ADD' onPress={addItem} />
+		// 	</View>
+>>>>>>> master
 
 			<FlatList
 				style={styles.containerList}

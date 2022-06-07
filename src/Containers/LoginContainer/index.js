@@ -1,8 +1,8 @@
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
-import Button from './../../Components/Button/index';
 import Input from '../../Components/Input';
 import React from 'react';
+import StyledButton from './../../Components/StyledButton/index';
 import { styles } from './styles';
 
 export default function LoginContainer() {
@@ -14,7 +14,7 @@ export default function LoginContainer() {
 				<Input placeholder='Introducí tu usuario' />
 				<Input placeholder='Introducí tu contraseña' />
 				<Text style={styles.questionText}>¿No tenés cuenta?</Text>
-				<Button text='Registrate' />
+				<StyledButton text='Registrate' />
 			</View>
 		</>
 	);
