@@ -26,7 +26,7 @@ const Input = ({
 		<TextInput
 			// {...props}
 			placeholder={placeholder}
-			style={[styles.container, { ...style }]}
+			style={{ ...styles.container, ...style }}
 			placeholderTextColor={placeholderTextColor}
 			// value={value}
 			onFocus={onHandleFocus}

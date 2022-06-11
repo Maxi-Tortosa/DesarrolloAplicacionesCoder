@@ -1,12 +1,13 @@
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import React from 'react';
+import { StyledText } from '../../Components';
 import { styles } from './styles';
 
 const CartContainer = () => {
 	return (
 		<View style={styles.container}>
-			<Text>Este es el detalle de tu pedido</Text>
+			<StyledText font='inter'>Este es el detalle de tu pedido</StyledText>
 			<FlatList></FlatList>
 		</View>
 	);

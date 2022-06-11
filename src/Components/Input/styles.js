@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
 	container: {
+		fontFamily: 'Inter',
 		width: '80%',
 		backgroundColor: 'white',
 		borderRadius: 10,

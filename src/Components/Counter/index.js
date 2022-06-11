@@ -1,7 +1,8 @@
 import { Button, Text, View } from 'react-native';
 import React, { useState } from 'react';
 
-import StyledButton from './../StyledButton/index';
+import StyledButton from '../StyledButton/index';
+import StyledText from '../StyledText';
 import { styles } from './styles';
 
 const Counter = ({ limit = 99, order, setOrder, product }) => {
@@ -33,7 +34,7 @@ const Counter = ({ limit = 99, order, setOrder, product }) => {
 	return (
 		<View style={styles.container}>
 			<StyledButton text='-' onPressEvent={handlerPress} />
-			<Text>{amount}</Text>
+			<StyledText>{amount}</StyledText>
 			<StyledButton text='+' onPressEvent={handlerPress} />
 			<StyledButton
 				text='agregar a mi pedido'

@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity } from 'react-native';
 
 import React from 'react';
+import StyledText from './../StyledText/index';
 import { styles } from './styles.js';
 
 const StyledButton = ({
@@ -23,7 +24,7 @@ const StyledButton = ({
 				{ backgroundColor: backgroundColor },
 			]}
 			onPress={handleOnPress}>
-			<Text>{text}</Text>
+			<StyledText font='inter'>{text}</StyledText>
 		</TouchableOpacity>
 	);
 };

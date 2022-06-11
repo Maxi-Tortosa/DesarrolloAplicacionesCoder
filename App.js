@@ -1,67 +1,71 @@
-import {
-	Button,
-	FlatList,
-	Modal,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from 'react-native';
 import React, { useState } from 'react';
 
-import CartContainer from './src/Containers/CartContainer';
-import HomeContainer from './src/Containers/HomeContainer/index';
-import LoginContainer from './src/Containers/LoginContainer/index';
-import { styles } from './styles';
+import { ActivityIndicator } from 'react-native';
+import CartContainer from './src/Screens/CartContainer/index';
+import HomeContainer from './src/Screens/HomeContainer/index';
+import LoginContainer from './src/Screens/LoginContainer/index';
+import theme from './Constants/theme';
+import { useFonts } from 'expo-font';
 
 export default function App() {
-	const [text, setText] = useState();
-	const [list, setList] = useState([]);
-	const [itemSelected, setItemSelected] = useState({});
-	const [modalVisible, setModalVisible] = useState(false);
+	const [user, setUser] = useState(false);
+	const [loaded] = useFonts({
+		Inter: require('./assets/fonts/inter/Inter-Regular.ttf'),
+		InterBold: require('./assets/fonts/inter/Inter-Bold.ttf'),
+		InterExtraBold: require('./assets/fonts/inter/Inter-ExtraBold.ttf'),
+	});
 
-	const handleChangeText = (text) => {
-		setText(text);
-	};
+	if (!loaded) {
+		return <ActivityIndicator size='large' color={theme.colors.primary} />;
+	}
 
-	const addItem = () => {
-		if (text != '') {
-			setList((currentList) => [
-				...currentList,
-				{ id: Math.random(), value: text },
-			]);
-			setText('');
-		}
-	};
+	// const [text, setText] = useState();
+	// const [list, setList] = useState([]);
+	// const [itemSelected, setItemSelected] = useState({});
+	// const [modalVisible, setModalVisible] = useState(false);
 
-	const onHandlerDelete = (id) => {
-		setList((currentList) => currentList.filter((item) => item.id != id));
-		setItemSelected({});
-		setModalVisible(!modalVisible);
-	};
+	// const handleChangeText = (text) => {
+	// 	setText(text);
+	// };
 
-	const onHandlerModal = (id) => {
-		setItemSelected(list.filter((item) => item.id == id)[0]);
-		setModalVisible(!modalVisible);
-	};
+	// const addItem = () => {
+	// 	if (text != '') {
+	// 		setList((currentList) => [
+	// 			...currentList,
+	// 			{ id: Math.random(), value: text },
+	// 		]);
+	// 		setText('');
+	// 	}
+	// };
 
-	const renderItem = ({ item }) => (
-		<View key={item.id} style={styles.containerItemList}>
-			<Text style={styles.itemList}>{item.value}</Text>
-			<TouchableOpacity
-				style={styles.deleteButton}
-				onPress={() => onHandlerModal(item.id)}>
-				<Text style={styles.deleteButtonText}> X </Text>
-			</TouchableOpacity>
-		</View>
-	);
+	// const onHandlerDelete = (id) => {
+	// 	setList((currentList) => currentList.filter((item) => item.id != id));
+	// 	setItemSelected({});
+	// 	setModalVisible(!modalVisible);
+	// };
 
-	const keyExtractor = (item) => item.id.toString();
+	// const onHandlerModal = (id) => {
+	// 	setItemSelected(list.filter((item) => item.id == id)[0]);
+	// 	setModalVisible(!modalVisible);
+	// };
+
+	// const renderItem = ({ item }) => (
+	// 	<View key={item.id} style={styles.containerItemList}>
+	// 		<Text style={styles.itemList}>{item.value}</Text>
+	// 		<TouchableOpacity
+	// 			style={styles.deleteButton}
+	// 			onPress={() => onHandlerModal(item.id)}>
+	// 			<Text style={styles.deleteButtonText}> X </Text>
+	// 		</TouchableOpacity>
+	// 	</View>
+	// );
+
+	// const keyExtractor = (item) => item.id.toString();
 
 	return (
 		<>
-			{/* <LoginContainer /> */}
-			<HomeContainer />
+			{!user ? <LoginContainer setUser={setUser} /> : <HomeContainer />}
+
 			{/* <CartContainer /> */}
 		</>
 		// <View style={styles.container}>

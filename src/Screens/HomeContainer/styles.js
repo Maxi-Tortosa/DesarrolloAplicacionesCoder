@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginBottom: 3,
 	},
-
+	categoryText: { marginLeft: 30 },
 	itemText: { flex: 1 },
 	orderList: { flex: 1 },
 });
