@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { ImageBackground, Text, View } from 'react-native';
 
 import React from 'react';
 import { styles } from './styles';
@@ -6,7 +6,11 @@ import { styles } from './styles';
 const Header = () => {
 	return (
 		<View style={styles.container}>
-			<Text>Soy el </Text>
+			<ImageBackground
+				style={styles.image}
+				source={require('./headerImg.jpg')}
+				resizeMode='cover'
+			/>
 		</View>
 	);
 };

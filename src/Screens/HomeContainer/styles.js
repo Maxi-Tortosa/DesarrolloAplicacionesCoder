@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
 
 	searcherInput: {
 		fontSize: 15,
-		marginTop: 90,
+		marginTop: 30,
 		borderWidth: 1,
 		elevation: 5,
 	},
