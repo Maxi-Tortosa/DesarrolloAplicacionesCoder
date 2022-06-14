@@ -11,7 +11,7 @@ const Input = ({
 	onBlur = () => null,
 	onFocus = () => null,
 	// editable,
-	// ...props
+	...props
 }) => {
 	const onHandleChangeText = (text) => {
 		onChangeText(text);
@@ -24,7 +24,7 @@ const Input = ({
 	};
 	return (
 		<TextInput
-			// {...props}
+			{...props}
 			placeholder={placeholder}
 			style={{ ...styles.container, ...style }}
 			placeholderTextColor={placeholderTextColor}

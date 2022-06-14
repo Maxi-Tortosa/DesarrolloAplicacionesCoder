@@ -9,12 +9,13 @@ export const styles = StyleSheet.create({
 	},
 
 	searcherInput: {
+		width: '85%',
 		fontSize: 15,
-		marginTop: 30,
+		marginVertical: 30,
 		borderWidth: 1,
 		elevation: 5,
 	},
-	order: { width: '80%', flex: 0.5, marginHorizontal: 30 },
+	order: { width: '80%', flex: 0.4, marginHorizontal: 30 },
 	orderTitle: { fontWeight: 'bold', marginBottom: 15, fontSize: 15 },
 	item: {
 		display: 'flex',
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginBottom: 3,
 	},
-	categoryText: { marginLeft: 30 },
+	categoryText: { fontSize: 18, lineHeight: 20, marginLeft: 30 },
 	itemText: { flex: 1 },
 	orderList: { flex: 1 },
 });

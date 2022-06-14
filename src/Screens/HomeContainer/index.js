@@ -31,15 +31,15 @@ const HomeContainer = () => {
 		<View style={styles.container}>
 			<Header />
 			<Input style={styles.searcherInput} placeholder='Encontrá tu producto' />
-			<SafeAreaView horizontal={false} style={{ flex: 1 }}>
-				<ScrollView style={{ flex: 1 }}>
+			<SafeAreaView horizontal={false} style={{ flex: 1, marginTop: 20 }}>
+				<ScrollView style={{ paddingVertical: 20 }}>
 					{Categories.map((cat, index) => {
 						return (
 							<View key={index}>
 								<StyledText style={styles.categoryText} font='interBold'>
 									{cat}
 								</StyledText>
-								<ScrollView horizontal={true} style={{}}>
+								<ScrollView horizontal={true}>
 									{Products.map((elem, index) =>
 										elem.category == cat ? (
 											<Card
