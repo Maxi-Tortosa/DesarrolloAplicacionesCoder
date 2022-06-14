@@ -4,6 +4,7 @@ import { FlatList, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { StyledText } from '../../Components/index';
+import { database } from '../../Config/fb';
 import { styles } from './styles';
 
 const HomeContainer = () => {
