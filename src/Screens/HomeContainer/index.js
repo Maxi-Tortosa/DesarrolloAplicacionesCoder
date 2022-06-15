@@ -2,9 +2,7 @@ import { Card, Header, Input, StyledButton } from '../../Components/index';
 import { Categories, Products } from '../../../Mocks/products';
 import { FlatList, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-
 import { StyledText } from '../../Components/index';
-import { database } from '../../Config/fb';
 import { styles } from './styles';
 import { db } from '../../../Firebase';
 import { onSnapshot, collection, addDoc } from 'firebase/firestore';
