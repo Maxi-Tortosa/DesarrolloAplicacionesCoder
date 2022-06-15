@@ -6,9 +6,42 @@ import React, { useEffect, useState } from 'react';
 import { StyledText } from '../../Components/index';
 import { database } from '../../Config/fb';
 import { styles } from './styles';
+import { db } from '../../../Firebase';
+import { onSnapshot, collection, addDoc } from 'firebase/firestore';
 
 const HomeContainer = () => {
 	const [order, setOrder] = useState([]);
+	const [productos, setProductos] = useState([]);
+	const [categorias, setCategorias] = useState([]);
+
+	useEffect(() => {
+		onSnapshot(
+			collection(db, 'Productos'),
+			(snapshot) => setProductos(snapshot.docs.map((doc) => doc.data())),
+			(error) => console.log('error', error)
+		);
+		onSnapshot(
+			collection(db, 'Categorias'),
+			(snapshot) => setCategorias(snapshot.docs.map((doc) => doc.data())),
+			(error) => console.log('error', error)
+		);
+	}, []);
+
+	// useEffect(() => {
+	// 	const docRef = collection(db, 'Productos');
+
+	// 	Products.forEach((elem) => {
+	// 		const product = {
+	// 			name: elem.name,
+	// 			description: elem.description,
+	// 			variety: elem.variety,
+	// 			price: elem.price,
+	// 			img: elem.img,
+	// 			category: elem.category,
+	// 		};
+	// 		return addDoc(docRef, product);
+	// 	});
+	// }, []);
 
 	// const onSubstract = (e, text, prop) => {
 	// 	setOrder((currentOrder) => currentOrder.filter((elem) => elem.id != prop));
@@ -32,31 +65,39 @@ const HomeContainer = () => {
 		<View style={styles.container}>
 			<Header />
 			<Input style={styles.searcherInput} placeholder='Encontrá tu producto' />
-			<SafeAreaView horizontal={false} style={{ flex: 1, marginTop: 20 }}>
-				<ScrollView style={{ paddingVertical: 20 }}>
-					{Categories.map((cat, index) => {
+
+			<ScrollView style={styles.verticalScroll}>
+				{categorias &&
+					categorias.map((cat, index) => {
+						const productsCategory =
+							productos &&
+							productos.filter((elem) => elem.category == cat.name);
+
 						return (
 							<View key={index}>
 								<StyledText style={styles.categoryText} font='interBold'>
-									{cat}
+									{cat.name}
 								</StyledText>
 								<ScrollView horizontal={true}>
-									{Products.map((elem, index) =>
-										elem.category == cat ? (
+									{productsCategory.length !== 0 ? (
+										productsCategory.map((elem, index) => (
 											<Card
 												key={index}
 												product={elem}
 												order={order}
 												setOrder={setOrder}
 											/>
-										) : null
+										))
+									) : (
+										<StyledText style={styles.noproductsText} font='inter'>
+											No existen productos para esta categoria
+										</StyledText>
 									)}
 								</ScrollView>
 							</View>
 						);
 					})}
-				</ScrollView>
-			</SafeAreaView>
+			</ScrollView>
 		</View>
 	);
 };
