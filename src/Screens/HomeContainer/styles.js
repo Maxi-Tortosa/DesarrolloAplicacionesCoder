@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		// justifyContent: 'center',
+		backgroundColor: 'white',
 	},
 
 	searcherInput: {

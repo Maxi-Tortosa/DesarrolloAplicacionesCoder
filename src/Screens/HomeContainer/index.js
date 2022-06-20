@@ -1,11 +1,18 @@
-import { Card, Header, Input, StyledButton } from '../../Components/index';
+import {
+	Banner,
+	Card,
+	Header,
+	Input,
+	StyledButton,
+} from '../../Components/index';
 import { Categories, Products } from '../../../Mocks/products';
 import { FlatList, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { addDoc, collection, onSnapshot } from 'firebase/firestore';
+
 import { StyledText } from '../../Components/index';
-import { styles } from './styles';
 import { db } from '../../../Firebase';
-import { onSnapshot, collection, addDoc } from 'firebase/firestore';
+import { styles } from './styles';
 
 const HomeContainer = () => {
 	const [order, setOrder] = useState([]);
@@ -70,8 +77,32 @@ const HomeContainer = () => {
 						const productsCategory =
 							productos &&
 							productos.filter((elem) => elem.category == cat.name);
+						const renderBanner = index + 1 === categorias.length ? true : false;
 
-						return (
+						return !renderBanner ? (
+							<View key={index}>
+								<StyledText style={styles.categoryText} font='interBold'>
+									{cat.name}
+								</StyledText>
+								<ScrollView horizontal={true}>
+									{productsCategory.length !== 0 ? (
+										productsCategory.map((elem, index) => (
+											<Card
+												key={index}
+												product={elem}
+												order={order}
+												setOrder={setOrder}
+											/>
+										))
+									) : (
+										<StyledText style={styles.noproductsText} font='inter'>
+											No existen productos para esta categoria
+										</StyledText>
+									)}
+								</ScrollView>
+								<Banner img={cat.catImg} />
+							</View>
+						) : (
 							<View key={index}>
 								<StyledText style={styles.categoryText} font='interBold'>
 									{cat.name}
