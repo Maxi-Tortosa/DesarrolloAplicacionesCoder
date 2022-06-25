@@ -10,11 +10,11 @@ const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
 	return (
 		<Stack.Navigator>
-			<Stack.Screen name='Login' component={LoginContainer} />
 			<Stack.Screen
-				name='Home'
+				name='Shop'
 				component={HomeContainer}
 				options={{
+					headerShown: false,
 					headerTitle: (props) => {
 						return (
 							<StyledText {...props} style={styles.headerTitle}>
@@ -25,7 +25,6 @@ const MainNavigator = () => {
 					headerTitleAlign: 'center',
 				}}
 			/>
-			<Stack.Screen name='Cart' component={CartContainer} />
 		</Stack.Navigator>
 	);
 };

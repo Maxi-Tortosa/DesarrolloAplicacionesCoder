@@ -16,7 +16,10 @@ import { styles } from './styles';
 
 export default function LoginContainer({ navigation }) {
 	const handlePress = () => {
-		navigation.navigate('Home');
+		// navigation.navigate(
+		// 	'Home'
+		// );
+		/* fijarse como se generó el tema del route.params.name en la clase 10 */
 	};
 	return (
 		<KeyboardAvoidingView
