@@ -7,6 +7,8 @@ import StyledText from '../../Components/StyledText';
 import { db } from '../../../Firebase';
 import { styles } from './styles';
 
+//CONTEMPLAR ELEGIR SABORES EN EL DETAIL
+
 const ProductsContainer = ({ navigation, route }) => {
 	const { name, categoriaId } = route.params;
 	const [productosFiltrados, setProductosFiltrados] = useState([]);
@@ -23,17 +25,16 @@ const ProductsContainer = ({ navigation, route }) => {
 		);
 	}, []);
 
-	console.warn(productosFiltrados);
-
 	const renderItem = ({ item }) => <Card product={item} />;
 
 	return (
 		<View style={styles.container}>
 			<FlatList
-				style={styles.products}
+				style={styles.productsList}
 				data={productosFiltrados}
 				renderItem={renderItem}
 				keyExtractor={(item) => item.id}
+				numColumns={2}
 			/>
 		</View>
 	);

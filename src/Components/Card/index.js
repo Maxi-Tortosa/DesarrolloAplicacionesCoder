@@ -1,4 +1,4 @@
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 import Counter from '../Counter';
 import React from 'react';
@@ -14,14 +14,16 @@ const Card = ({ product, order, setOrder }) => {
 
 	return (
 		<View style={styles.container}>
-			<Image style={{ width: 200, height: 200 }} source={imageSrc} />
-			<StyledText font='interBold' style={styles.name}>
-				{name}
-			</StyledText>
-			<StyledText font='inter'>{description}</StyledText>
+			<TouchableOpacity style={styles.containerTouchable} onPress={() => null}>
+				<Image style={styles.img} source={imageSrc} />
+				<StyledText font='interBold' style={styles.name}>
+					{name}
+				</StyledText>
+			</TouchableOpacity>
+			{/* <StyledText font='inter'>{description}</StyledText>
 			<StyledText font='inter'>{variety}</StyledText>
-			<StyledText font='inter'>{price}</StyledText>
-			<Counter order={order} setOrder={setOrder} product={product} />
+			<StyledText font='inter'>{price}</StyledText> */}
+			{/* <Counter order={order} setOrder={setOrder} product={product} /> */}
 		</View>
 	);
 };

@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
 	container: {
 		width: width * 0.85,
 		height: height * 0.25,
-		margin: 20,
+		marginHorizontal: (width * 0.15) / 2,
+		marginVertical: 20,
 		borderRadius: 20,
 	},
 	containerTouchable: {
