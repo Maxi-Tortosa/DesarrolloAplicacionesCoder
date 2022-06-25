@@ -11,7 +11,7 @@ const BottomTabs = createBottomTabNavigator();
 const TabNavigator = () => {
 	return (
 		<BottomTabs.Navigator
-			initialRouteName='HomeScreen'
+			initialRouteName='Home'
 			screenOptions={{
 				headerShown: false,
 			}}>

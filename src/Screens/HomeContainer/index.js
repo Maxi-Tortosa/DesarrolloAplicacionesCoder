@@ -1,77 +1,59 @@
 import {
 	Banner,
 	Card,
+	CategoryCard,
 	Header,
 	Input,
 	StyledButton,
+	StyledText,
 } from '../../Components/index';
-import { Categories, Products } from '../../../Mocks/products';
 import { FlatList, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { addDoc, collection, onSnapshot } from 'firebase/firestore';
 
-import { StyledText } from '../../Components/index';
 import { db } from '../../../Firebase';
 import { styles } from './styles';
 
-const HomeContainer = () => {
+const HomeContainer = ({ navigation }) => {
 	const [order, setOrder] = useState([]);
-	const [productos, setProductos] = useState([]);
+
 	const [categorias, setCategorias] = useState([]);
 
 	useEffect(() => {
 		onSnapshot(
-			collection(db, 'Productos'),
-			(snapshot) => setProductos(snapshot.docs.map((doc) => doc.data())),
-			(error) => console.log('error', error)
-		);
-		onSnapshot(
 			collection(db, 'Categorias'),
-			(snapshot) => setCategorias(snapshot.docs.map((doc) => doc.data())),
+			(snapshot) =>
+				setCategorias(
+					snapshot.docs.map((doc) => ({ ...doc.data(), ['id']: doc.id }))
+				),
 			(error) => console.log('error', error)
 		);
 	}, []);
 
-	// useEffect(() => {
-	// 	const docRef = collection(db, 'Productos');
+	const onSelected = (item) => {
+		navigation.navigate('Products', {
+			categoryId: item.id,
+			name: item.name,
+		});
+	};
 
-	// 	Products.forEach((elem) => {
-	// 		const product = {
-	// 			name: elem.name,
-	// 			description: elem.description,
-	// 			variety: elem.variety,
-	// 			price: elem.price,
-	// 			img: elem.img,
-	// 			category: elem.category,
-	// 		};
-	// 		return addDoc(docRef, product);
-	// 	});
-	// }, []);
+	const renderItem = ({ item }) => (
+		<CategoryCard item={item} onSelected={onSelected} />
+	);
 
-	// const onSubstract = (e, text, prop) => {
-	// 	setOrder((currentOrder) => currentOrder.filter((elem) => elem.id != prop));
-	// };
-	// useEffect(() => {
-	// console.warn(order);
-	// }, [order]);
-
-	// const renderItem = ({ item, index }) => (
-	// 	<View style={styles.item} key={index}>
-	// 		<Text style={styles.itemText}>{item.name}</Text>
-	// 		<StyledButton
-	// 			text='x'
-	// 			backgroundColor='#F3D15F'
-	// 			onPressEvent={onSubstract}
-	// 			prop={item.id}
-	// 		/>
-	// 	</View>
-	// );
 	return (
 		<View style={styles.container}>
 			<Header />
 			<Input style={styles.searcherInput} placeholder='Encontrá tu producto' />
 
-			<ScrollView style={styles.verticalScroll}>
+			<FlatList
+				style={styles.categoryList}
+				data={categorias}
+				renderItem={renderItem}
+				keyExtractor={(item) => item.id}
+			/>
+
+			{/* <ScrollView style={styles.verticalScroll}>
 				{categorias &&
 					categorias.map((cat, index) => {
 						const productsCategory =
@@ -126,7 +108,7 @@ const HomeContainer = () => {
 							</View>
 						);
 					})}
-			</ScrollView>
+			</ScrollView> */}
 		</View>
 	);
 };

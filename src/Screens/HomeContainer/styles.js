@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
 		elevation: 5,
 	},
 
-	verticalScroll: {},
+	categoryList: { flex: 1 },
 	categoryText: { fontSize: 18, lineHeight: 20, marginLeft: 30, marginTop: 15 },
 
 	noproductsText: {

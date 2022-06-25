@@ -1,4 +1,9 @@
-import { CartContainer, HomeContainer, LoginContainer } from '../Screens/index';
+import {
+	CartContainer,
+	HomeContainer,
+	LoginContainer,
+	ProductsContainer,
+} from '../Screens/index';
 
 import React from 'react';
 import { StyledText } from '../Components/index';
@@ -11,20 +16,13 @@ const MainNavigator = () => {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name='Shop'
+				name='Home'
 				component={HomeContainer}
 				options={{
 					headerShown: false,
-					headerTitle: (props) => {
-						return (
-							<StyledText {...props} style={styles.headerTitle}>
-								Hacé tu pedido
-							</StyledText>
-						);
-					},
-					headerTitleAlign: 'center',
 				}}
 			/>
+			<Stack.Screen name='Products' component={ProductsContainer} />
 		</Stack.Navigator>
 	);
 };
