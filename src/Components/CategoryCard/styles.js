@@ -16,6 +16,8 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		borderRadius: theme.borderRadius.categoryCard,
 		overflow: 'hidden',
+		borderWidth: 1,
+		borderColor: theme.colors.primary,
 	},
 	imageBackground: {
 		flex: 1,

@@ -2,6 +2,7 @@ import {
 	CartContainer,
 	HomeContainer,
 	LoginContainer,
+	ProductDetailScreen,
 	ProductsContainer,
 } from '../Screens/index';
 
@@ -26,11 +27,22 @@ const MainNavigator = () => {
 			<Stack.Screen
 				name='Products'
 				component={ProductsContainer}
-				options={{
+				options={({ route }) => ({
+					title: route.params.name,
 					headerStyle: {
 						backgroundColor: theme.colors.primary,
 					},
-				}}
+				})}
+			/>
+			<Stack.Screen
+				name='ProductDetail'
+				component={ProductDetailScreen}
+				options={({ route }) => ({
+					title: route.params.name,
+					headerStyle: {
+						backgroundColor: theme.colors.primary,
+					},
+				})}
 			/>
 		</Stack.Navigator>
 	);

@@ -145,4 +145,8 @@ export const Products = [
 	},
 ];
 
-export const Categories = ['Burgers', 'Granel', 'Empanadas'];
+export const Categories = [
+	{ name: 'Burgers', id: 1 },
+	{ name: 'Granel', id: 2 },
+	{ name: 'Empanadas', id: 3 },
+];

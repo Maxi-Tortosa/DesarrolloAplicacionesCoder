@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
 import { ActivityIndicator } from 'react-native';
+import { Provider } from 'react-redux';
 import Root from './src/index';
+import store from './src/Store/index';
 import theme from './Constants/theme';
 import { useFonts } from 'expo-font';
 
@@ -17,5 +19,9 @@ export default function App() {
 		return <ActivityIndicator size='large' color={theme.colors.primary} />;
 	}
 
-	return <Root />;
+	return (
+		<Provider store={store}>
+			<Root />
+		</Provider>
+	);
 }
