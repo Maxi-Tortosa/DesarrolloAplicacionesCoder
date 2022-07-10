@@ -17,12 +17,12 @@ const StyledButton = ({
 
 	return (
 		<TouchableOpacity
-			style={[
-				styles.button,
-				{ ...style },
-				{ fontColor: fontColor },
-				{ backgroundColor: backgroundColor },
-			]}
+			style={{
+				...styles.button,
+				...style,
+				fontColor: fontColor,
+				backgroundColor: backgroundColor,
+			}}
 			onPress={handleOnPress}>
 			<StyledText font='inter'>{text}</StyledText>
 		</TouchableOpacity>

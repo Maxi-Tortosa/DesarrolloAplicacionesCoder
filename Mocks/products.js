@@ -150,3 +150,36 @@ export const Categories = [
 	{ name: 'Granel', id: 2 },
 	{ name: 'Empanadas', id: 3 },
 ];
+
+export const Cart = [
+	// {
+	// 	id: '15',
+	// 	name: 'Empanada calabacín y queso x 6 unidades',
+	// 	description: 'Ingredientes principales: calabacín y queso.',
+	// 	variety: 'Calabacín',
+	// 	price: 600,
+	// 	img: 'imagenEjemplo.png',
+	// 	category: 'Empanadas',
+	// 	quantity: 1,
+	// },
+	// {
+	// 	id: '11',
+	// 	name: 'Falafel x kg',
+	// 	description: 'Venta a granel, cantidad mínima: medio kg.',
+	// 	variety: 'Vegano',
+	// 	price: 400,
+	// 	img: 'imagenEjemplo.png',
+	// 	category: 'Granel',
+	// 	quantity: 1,
+	// },
+	// {
+	// 	id: '14',
+	// 	name: 'Empanada árabe x 12 unidades',
+	// 	description: 'Ingrediente principal: soja texturizada.',
+	// 	variety: 'Soja',
+	// 	price: 1000,
+	// 	img: 'imagenEjemplo.png',
+	// 	category: 'Empanadas',
+	// 	quantity: 1,
+	// },
+];

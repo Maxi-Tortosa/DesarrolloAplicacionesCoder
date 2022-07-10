@@ -9,11 +9,11 @@ const LoginNavigator = () => {
 	return (
 		<Stack.Navigator initialRouteName='Login'>
 			<Stack.Screen
-				name='Login'
-				component={LoginContainer}
 				options={{
 					headerShown: false,
 				}}
+				name='Login'
+				component={LoginContainer}
 			/>
 		</Stack.Navigator>
 	);

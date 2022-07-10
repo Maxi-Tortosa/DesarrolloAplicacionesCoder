@@ -1,1 +1,4 @@
-export const categoryTypes = { SELECT_CATEGORY: 'SELECT_CATEGORY' };
+export const categoryTypes = {
+	GET_CATEGORIES: 'GET_CATEGORIES',
+	SELECT_CATEGORY: 'SELECT_CATEGORY',
+};

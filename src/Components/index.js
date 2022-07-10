@@ -6,3 +6,6 @@ export { default as StyledText } from './StyledText/index';
 export { default as Header } from './Header/index';
 export { default as Banner } from './Banner/index';
 export { default as CategoryCard } from './CategoryCard/index';
+export { default as CartItem } from './CartItem/index';
+export { default as OrderItem } from './OrderItem/index';
+export { default as RegisterModal } from './RegisterModal/index';

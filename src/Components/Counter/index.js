@@ -5,12 +5,16 @@ import StyledButton from '../StyledButton/index';
 import StyledText from '../StyledText';
 import { styles } from './styles';
 
-const Counter = ({ limit = 99, product, amount, setAmount }) => {
+const Counter = ({ limit = 99, onAdd, amount, setAmount }) => {
 	const handlerPress = (e, text) => {
 		(text == '-') & (amount > 0) &&
 			setAmount((currentAmount) => currentAmount - 1);
 		(text == '+') & (amount < limit) &&
 			setAmount((currentAmount) => currentAmount + 1);
+	};
+
+	const handleAdd = () => {
+		onAdd();
 	};
 
 	// const addToOrder = (e, text) => {
@@ -39,7 +43,7 @@ const Counter = ({ limit = 99, product, amount, setAmount }) => {
 			<StyledButton
 				text='agregar a mi pedido'
 				backgroundColor='#F3D15F'
-				onPressEvent={() => null}
+				onPressEvent={handleAdd}
 			/>
 		</View>
 	);

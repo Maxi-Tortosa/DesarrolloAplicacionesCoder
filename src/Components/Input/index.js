@@ -6,15 +6,15 @@ const Input = ({
 	placeholder,
 	style,
 	placeholderTextColor = '#212121',
-	// value,
+	value,
 	onChangeText,
 	onBlur = () => null,
 	onFocus = () => null,
 	// editable,
 	...props
 }) => {
-	const onHandleChangeText = (text) => {
-		onChangeText(text);
+	const onHandleChangeText = (text, type) => {
+		onChangeText(text, type);
 	};
 	const onHandleBlur = () => {
 		onBlur();
@@ -28,10 +28,10 @@ const Input = ({
 			placeholder={placeholder}
 			style={{ ...styles.container, ...style }}
 			placeholderTextColor={placeholderTextColor}
-			// value={value}
-			onFocus={onHandleFocus}
+			value={value}
+			// onFocus={onHandleFocus}
 			// onBlur={onHandleBlur}
-			// onChangeText={onHandleChangeText}
+			onChangeText={onHandleChangeText}
 		/>
 	);
 };

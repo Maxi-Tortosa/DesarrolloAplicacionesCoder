@@ -1,43 +1,24 @@
 import {
-	Banner,
-	Card,
 	CategoryCard,
 	Header,
 	Input,
 	StyledButton,
 	StyledText,
 } from '../../Components/index';
-import { FlatList, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { addDoc, collection, onSnapshot } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { db } from '../../../Firebase';
 import { selectCategory } from '../../Store/Actions/category.actions';
 import { styles } from './styles';
 
 const HomeContainer = ({ navigation }) => {
-	const [order, setOrder] = useState([]);
 	const dispatch = useDispatch();
-
-	// const [categorias, setCategorias] = useState([]);
-
 	const categories = useSelector((state) => state.category.categories);
 	const categorySelected = useSelector((state) => state.category.selected);
 	const categoryProducts = useSelector(
 		(state) => state.products.filteredProducts
 	);
-
-	// useEffect(() => {
-	// 	onSnapshot(
-	// 		collection(db, 'Categorias'),
-	// 		(snapshot) =>
-	// 			setCategorias(
-	// 				snapshot.docs.map((doc) => ({ ...doc.data(), ['id']: doc.id }))
-	// 			),
-	// 		(error) => console.log('error', error)
-	// 	);
-	// }, []);
 
 	const onSelected = (item) => {
 		dispatch(selectCategory(item.id));
@@ -52,6 +33,7 @@ const HomeContainer = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
+			<StyledButton />
 			<Header />
 			<Input style={styles.searcherInput} placeholder='Encontrá tu producto' />
 
@@ -61,63 +43,6 @@ const HomeContainer = ({ navigation }) => {
 				renderItem={renderItem}
 				keyExtractor={(item) => item.id}
 			/>
-
-			{/* <ScrollView style={styles.verticalScroll}>
-				{categorias &&
-					categorias.map((cat, index) => {
-						const productsCategory =
-							productos &&
-							productos.filter((elem) => elem.category == cat.name);
-						const renderBanner = index + 1 === categorias.length ? true : false;
-
-						return !renderBanner ? (
-							<View key={index}>
-								<StyledText style={styles.categoryText} font='interBold'>
-									{cat.name}
-								</StyledText>
-								<ScrollView horizontal={true}>
-									{productsCategory.length !== 0 ? (
-										productsCategory.map((elem, index) => (
-											<Card
-												key={index}
-												product={elem}
-												order={order}
-												setOrder={setOrder}
-											/>
-										))
-									) : (
-										<StyledText style={styles.noproductsText} font='inter'>
-											No existen productos para esta categoria
-										</StyledText>
-									)}
-								</ScrollView>
-								<Banner img={cat.catImg} />
-							</View>
-						) : (
-							<View key={index}>
-								<StyledText style={styles.categoryText} font='interBold'>
-									{cat.name}
-								</StyledText>
-								<ScrollView horizontal={true}>
-									{productsCategory.length !== 0 ? (
-										productsCategory.map((elem, index) => (
-											<Card
-												key={index}
-												product={elem}
-												order={order}
-												setOrder={setOrder}
-											/>
-										))
-									) : (
-										<StyledText style={styles.noproductsText} font='inter'>
-											No existen productos para esta categoria
-										</StyledText>
-									)}
-								</ScrollView>
-							</View>
-						);
-					})}
-			</ScrollView> */}
 		</View>
 	);
 };
