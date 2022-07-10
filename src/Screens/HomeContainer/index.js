@@ -7,9 +7,12 @@ import {
 } from '../../Components/index';
 import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import {
+	getCategories,
+	selectCategory,
+} from '../../Store/Actions/category.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectCategory } from '../../Store/Actions/category.actions';
 import { styles } from './styles';
 
 const HomeContainer = ({ navigation }) => {
@@ -26,6 +29,10 @@ const HomeContainer = ({ navigation }) => {
 			name: item.name,
 		});
 	};
+
+	useEffect(() => {
+		dispatch(getCategories());
+	}, [categories]);
 
 	const renderItem = ({ item }) => (
 		<CategoryCard item={item} onSelected={onSelected} />

@@ -1,3 +1,4 @@
+import { URL_API } from '../../../Constants/firebase';
 import { categoryTypes } from '../Types/category.types';
 
 const { SELECT_CATEGORY, GET_CATEGORIES } = categoryTypes;
@@ -25,7 +26,7 @@ export const getCategories = () => {
 			});
 
 			dispatch({
-				type: GET_ORDERS,
+				type: GET_CATEGORIES,
 				payload: categories,
 			});
 		} catch (error) {

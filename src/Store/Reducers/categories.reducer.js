@@ -1,12 +1,16 @@
-import { Categories } from '../../../Mocks/products';
 import { categoryTypes } from '../Types/category.types';
 
-const { SELECT_CATEGORY } = categoryTypes;
+const { GET_CATEGORIES, SELECT_CATEGORY } = categoryTypes;
 
-const initialState = { categories: Categories, selected: null };
+const initialState = { categories: [], selected: null };
 
 const CategoriesReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case GET_CATEGORIES:
+			return {
+				...state,
+				categories: action.payload,
+			};
 		case SELECT_CATEGORY:
 			const indexCategory = state.categories.findIndex(
 				(category) => category.id === action.categoryId
