@@ -1,11 +1,34 @@
 import {
 	URL_AUTH_SIGN_IN,
+	URL_AUTH_SIGN_OUT,
 	URL_AUTH_SIGN_UP,
 } from '../../../Constants/firebase';
 
 import { loginTypes } from '../Types/login.types';
 
-const { SIGN_UP, SIGN_IN } = loginTypes;
+const { SIGN_UP, SIGN_IN, SIGN_OUT } = loginTypes;
+
+export const signout = (idToken) => {
+	return async (dispatch) => {
+		try {
+			await fetch(URL_AUTH_SIGN_OUT, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					idToken: `${idToken}`,
+				},
+			});
+		} catch (error) {
+			console.log(error);
+		}
+
+		dispatch({
+			type: SIGN_OUT,
+			token: null,
+			userId: null,
+		});
+	};
+};
 
 export const signup = (email, password) => {
 	return async (dispatch) => {

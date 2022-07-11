@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
 		backgroundColor: theme.colors.white,
 		flex: 1,
 		flexDirection: 'column',
+		alignItems: 'center',
 	},
 	modal: {},
 	closeButton: {
@@ -27,22 +28,22 @@ export const styles = StyleSheet.create({
 	titleText: {
 		fontSize: 14,
 		width: '50%',
-		marginLeft: 30,
+		marginLeft: 32,
 		marginTop: 80,
 		color: theme.colors.primary,
+		alignSelf: 'flex-start',
 	},
 	titleText2: {
 		fontSize: 40,
 		width: '50%',
-		marginLeft: 30,
+		marginLeft: 32,
 		marginBottom: 40,
 		color: theme.colors.primary,
+		alignSelf: 'flex-start',
 	},
 	input: {
 		backgroundColor: theme.colors.primary,
-
 		marginTop: 10,
-		marginLeft: 30,
 	},
 	submitButton: {
 		backgroundColor: theme.colors.primary,

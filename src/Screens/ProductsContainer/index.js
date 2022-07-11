@@ -1,6 +1,5 @@
 import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import {
 	filteredProducts,
 	selectProduct,
@@ -8,8 +7,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Card } from '../../Components';
-import StyledText from '../../Components/StyledText';
-import { db } from '../../../Firebase';
 import { styles } from './styles';
 
 //CONTEMPLAR ELEGIR SABORES EN EL DETAIL

@@ -57,6 +57,7 @@ const LoginContainer = ({ navigation }) => {
 						keyboardType='email-address'
 						onChangeText={(text) => onHandleChange(text, 'email')}
 						value={email}
+						label='Ingresá tu email'
 					/>
 					<Input
 						placeholder='******'
@@ -65,12 +66,21 @@ const LoginContainer = ({ navigation }) => {
 						secureTextEntry={true}
 						onChangeText={(text) => onHandleChange(text, 'password')}
 						value={password}
+						label='Ingresá tu password'
 					/>
-					<StyledButton text='Ingresar' onPressEvent={onHandlerLogin} />
+					<StyledButton
+						style={styles.buttonIngresar}
+						text='Ingresar'
+						onPressEvent={onHandlerLogin}
+					/>
 					<StyledText style={styles.questionText} font='interBold'>
 						¿No tenés cuenta?
 					</StyledText>
-					<StyledButton text='Registrate' onPressEvent={handleOpen} />
+					<StyledButton
+						style={styles.buttonRegister}
+						text='Registrate'
+						onPressEvent={handleOpen}
+					/>
 					{isRegister && (
 						<RegisterModal
 							email={email}

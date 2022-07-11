@@ -21,6 +21,9 @@ const LoginReducer = (state = initialState, action) => {
 				token: action.token,
 				userId: action.userId,
 			};
+
+		case SIGN_OUT:
+			return { ...state, token: action.token, userId: action.userId };
 		default:
 			return state;
 	}

@@ -13,15 +13,13 @@ import {
 } from '../../Store/Actions/category.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { signout } from './../../Store/Actions/login.actions';
 import { styles } from './styles';
 
 const HomeContainer = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const categories = useSelector((state) => state.category.categories);
-	const categorySelected = useSelector((state) => state.category.selected);
-	const categoryProducts = useSelector(
-		(state) => state.products.filteredProducts
-	);
+	const currentUser = useSelector((state) => state.login);
 
 	const onSelected = (item) => {
 		dispatch(selectCategory(item.id));
@@ -30,9 +28,13 @@ const HomeContainer = ({ navigation }) => {
 		});
 	};
 
+	const handleClose = () => {
+		dispatch(signout(currentUser.token));
+	};
+
 	useEffect(() => {
 		dispatch(getCategories());
-	}, [categories]);
+	}, []);
 
 	const renderItem = ({ item }) => (
 		<CategoryCard item={item} onSelected={onSelected} />
@@ -40,7 +42,7 @@ const HomeContainer = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<StyledButton />
+			<StyledButton text='Cerrar sesión' onPressEvent={handleClose} />
 			<Header />
 			<Input style={styles.searcherInput} placeholder='Encontrá tu producto' />
 

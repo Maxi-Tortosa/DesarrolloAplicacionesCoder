@@ -57,6 +57,7 @@ const RegisterModal = ({
 					autoCorrect={false}
 					keyboardType='email-address'
 					onChangeText={(text) => handleChange(text, 'email')}
+					label='Registrá tu email'
 				/>
 				<Input
 					style={styles.input}
@@ -65,6 +66,7 @@ const RegisterModal = ({
 					autoCorrect={false}
 					secureTextEntry={true}
 					onChangeText={(text) => handleChange(text, 'password')}
+					label='Registrá tu password'
 				/>
 				<StyledButton
 					style={styles.submitButton}

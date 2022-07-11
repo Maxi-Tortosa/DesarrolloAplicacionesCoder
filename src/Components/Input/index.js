@@ -1,5 +1,8 @@
+import { TextInput, View } from 'react-native';
+
+import Label from '../Label';
 import React from 'react';
-import { TextInput } from 'react-native';
+import { StyledText } from '../StyledText/index';
 import { styles } from './styles';
 
 const Input = ({
@@ -10,29 +13,36 @@ const Input = ({
 	onChangeText,
 	onBlur = () => null,
 	onFocus = () => null,
-	// editable,
+	editable,
+	maxLength,
+	keyboardType,
 	...props
 }) => {
 	const onHandleChangeText = (text, type) => {
 		onChangeText(text, type);
 	};
-	const onHandleBlur = () => {
-		onBlur();
-	};
-	const onHandleFocus = () => {
-		onFocus();
-	};
+
 	return (
-		<TextInput
-			{...props}
-			placeholder={placeholder}
-			style={{ ...styles.container, ...style }}
-			placeholderTextColor={placeholderTextColor}
-			value={value}
-			// onFocus={onHandleFocus}
-			// onBlur={onHandleBlur}
-			onChangeText={onHandleChangeText}
-		/>
+		<View style={styles.container}>
+			<Label {...props}>
+				<TextInput
+					{...props}
+					placeholder={placeholder}
+					style={{ ...styles.textInput, ...style }}
+					placeholderTextColor={placeholderTextColor}
+					value={value}
+					onFocus={onFocus}
+					onBlur={onBlur}
+					onChangeText={onHandleChangeText}
+					editable={editable}
+					maxLength={maxLength}
+					keyboardType={keyboardType}
+				/>
+			</Label>
+			{/* <View style={styles.message}>
+				<StyledText style={styles.helperText}>{}</StyledText>
+			</View> */}
+		</View>
 	);
 };
 
