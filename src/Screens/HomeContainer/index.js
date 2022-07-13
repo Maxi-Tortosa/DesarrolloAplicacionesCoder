@@ -19,7 +19,7 @@ import { styles } from './styles';
 const HomeContainer = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const categories = useSelector((state) => state.category.categories);
-	const currentUser = useSelector((state) => state.login);
+	// const currentUser = useSelector((state) => state.login);
 
 	const onSelected = (item) => {
 		dispatch(selectCategory(item.id));
@@ -29,7 +29,10 @@ const HomeContainer = ({ navigation }) => {
 	};
 
 	const handleClose = () => {
-		dispatch(signout(currentUser.token));
+		dispatch(
+			signout()
+			// currentUser.token
+		);
 	};
 
 	useEffect(() => {

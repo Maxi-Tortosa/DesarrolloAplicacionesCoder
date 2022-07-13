@@ -6,7 +6,9 @@ import { styles } from './styles';
 const Label = ({ children, style, label, subLabel, subLabelStyle }) => {
 	return (
 		<View style={styles.container}>
-			<StyledText style={{ ...styles.label, ...style }}>{label}</StyledText>
+			<StyledText style={{ ...styles.label, ...style }} font='interBold'>
+				{label}
+			</StyledText>
 			{children}
 			{subLabel && (
 				<StyledText style={[styles.subLabel, subLabelStyle]}>

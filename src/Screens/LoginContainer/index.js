@@ -6,36 +6,47 @@ import {
 	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
-import { Input, RegisterModal, StyledButton } from './../../Components/index';
-import React, { useState } from 'react';
+import {
+	Input,
+	RegisterModal,
+	StyledButton,
+	StyledText,
+} from './../../Components/index';
+import React, { useReducer, useState } from 'react';
+import {
+	formReducer,
+	initialState,
+	onCleanForm,
+	onFocusOut,
+	onInputChange,
+} from '../../Utils/form';
 
-import { StyledText } from '../../Components/index';
 import { signin } from './../../Store/Actions/login.actions';
 import { styles } from './styles';
 import { useDispatch } from 'react-redux';
 
 const LoginContainer = ({ navigation }) => {
 	const [isRegister, setIsRegister] = useState(false);
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-
+	const [formState, dispatchFormState] = useReducer(formReducer, initialState);
 	const dispatch = useDispatch();
 
 	const onHandleChange = (text, type) => {
-		if (type === 'email') setEmail(text);
-		if (type === 'password') setPassword(text);
+		onInputChange(type, text, dispatchFormState, formState);
 	};
 
-	const handleOpen = () => {
+	const onBlurInput = (text, type) => {
+		onFocusOut(type, text, dispatchFormState, formState);
+	};
+
+	const handleModal = () => {
 		setIsRegister(!isRegister);
+		onCleanForm(dispatchFormState);
 	};
 
 	const onHandlerLogin = () => {
-		dispatch(signin(email, password));
+		dispatch(signin(formState.email.value, formState.password.value));
 	};
 
-	/*Hacer botón de sign out con url de sign out de la doc de restful */
-	/*Cambiar de acuerdo a un estado si es login o register */
 	return (
 		<KeyboardAvoidingView
 			style={{ flex: 1 }}
@@ -56,7 +67,11 @@ const LoginContainer = ({ navigation }) => {
 						autoCorrect={false}
 						keyboardType='email-address'
 						onChangeText={(text) => onHandleChange(text, 'email')}
-						value={email}
+						onBlur={(e) => onBlurInput(formState.email.value, 'email')}
+						value={formState.email.value}
+						hasError={formState.email.hasError}
+						error={formState.email.error}
+						touched={formState.email.touched}
 						label='Ingresá tu email'
 					/>
 					<Input
@@ -65,7 +80,11 @@ const LoginContainer = ({ navigation }) => {
 						autoCorrect={false}
 						secureTextEntry={true}
 						onChangeText={(text) => onHandleChange(text, 'password')}
-						value={password}
+						onBlur={(e) => onBlurInput(formState.password.value, 'password')}
+						value={formState.password.value}
+						hasError={formState.password.hasError}
+						error={formState.password.error}
+						touched={formState.password.touched}
 						label='Ingresá tu password'
 					/>
 					<StyledButton
@@ -79,15 +98,15 @@ const LoginContainer = ({ navigation }) => {
 					<StyledButton
 						style={styles.buttonRegister}
 						text='Registrate'
-						onPressEvent={handleOpen}
+						onPressEvent={handleModal}
 					/>
 					{isRegister && (
 						<RegisterModal
-							email={email}
-							password={password}
+							onBlur={onBlurInput}
+							formState={formState}
 							handleChange={onHandleChange}
 							isRegister={isRegister}
-							onPressEvent={setIsRegister}
+							onPressEvent={handleModal}
 						/>
 					)}
 				</View>

@@ -2,26 +2,26 @@ import { TextInput, View } from 'react-native';
 
 import Label from '../Label';
 import React from 'react';
-import { StyledText } from '../StyledText/index';
+import StyledText from '../StyledText/index';
 import { styles } from './styles';
 
 const Input = ({
-	placeholder,
-	style,
-	placeholderTextColor = '#212121',
+	editable,
+	children,
 	value,
 	onChangeText,
-	onBlur = () => null,
-	onFocus = () => null,
-	editable,
+	onFocus,
+	onBlur,
 	maxLength,
+	placeholder,
+	placeholderTextColor,
 	keyboardType,
+	hasError,
+	error,
+	touched,
+	style,
 	...props
 }) => {
-	const onHandleChangeText = (text, type) => {
-		onChangeText(text, type);
-	};
-
 	return (
 		<View style={styles.container}>
 			<Label {...props}>
@@ -33,15 +33,19 @@ const Input = ({
 					value={value}
 					onFocus={onFocus}
 					onBlur={onBlur}
-					onChangeText={onHandleChangeText}
+					onChangeText={onChangeText}
 					editable={editable}
 					maxLength={maxLength}
 					keyboardType={keyboardType}
 				/>
 			</Label>
-			{/* <View style={styles.message}>
-				<StyledText style={styles.helperText}>{}</StyledText>
-			</View> */}
+			{hasError && touched && error && (
+				<View style={styles.message}>
+					<StyledText style={styles.helperText} font='inter'>
+						{error}
+					</StyledText>
+				</View>
+			)}
 		</View>
 	);
 };
