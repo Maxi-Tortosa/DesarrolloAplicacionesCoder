@@ -8,7 +8,6 @@ import theme from './Constants/theme';
 import { useFonts } from 'expo-font';
 
 export default function App() {
-	const [user, setUser] = useState(false);
 	const [loaded] = useFonts({
 		Inter: require('./assets/fonts/inter/Inter-Regular.ttf'),
 		InterBold: require('./assets/fonts/inter/Inter-Bold.ttf'),

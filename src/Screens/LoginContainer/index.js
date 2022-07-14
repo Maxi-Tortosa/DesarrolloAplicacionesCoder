@@ -67,7 +67,7 @@ const LoginContainer = ({ navigation }) => {
 						autoCorrect={false}
 						keyboardType='email-address'
 						onChangeText={(text) => onHandleChange(text, 'email')}
-						onBlur={(e) => onBlurInput(formState.email.value, 'email')}
+						onEndEditing={(e) => onBlurInput(e.nativeEvent.text, 'email')}
 						value={formState.email.value}
 						hasError={formState.email.hasError}
 						error={formState.email.error}
@@ -80,7 +80,7 @@ const LoginContainer = ({ navigation }) => {
 						autoCorrect={false}
 						secureTextEntry={true}
 						onChangeText={(text) => onHandleChange(text, 'password')}
-						onBlur={(e) => onBlurInput(formState.password.value, 'password')}
+						onEndEditing={(e) => onBlurInput(e.nativeEvent.text, 'password')}
 						value={formState.password.value}
 						hasError={formState.password.hasError}
 						error={formState.password.error}

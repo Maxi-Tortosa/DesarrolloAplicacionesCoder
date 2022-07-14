@@ -51,7 +51,7 @@ const RegisterModal = ({
 						autoCorrect={false}
 						keyboardType='email-address'
 						onChangeText={(text) => handleChange(text, 'email')}
-						onBlur={() => onBlur(formState.email.value, 'email')}
+						onEndEditing={(e) => onBlur(e.nativeEvent.text, 'email')}
 						value={formState.email.value}
 						hasError={email.hasError}
 						error={email.error}
@@ -65,7 +65,7 @@ const RegisterModal = ({
 						autoCorrect={false}
 						secureTextEntry={true}
 						onChangeText={(text) => handleChange(text, 'password')}
-						onBlur={() => onBlur(formState.password.value, 'password')}
+						onEndEditing={(e) => onBlur(e.nativeEvent.text, 'password')}
 						value={formState.password.value}
 						hasError={password.hasError}
 						error={password.error}
