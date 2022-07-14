@@ -1,12 +1,13 @@
-import { OrderContainer } from '../Screens/index';
+import { OrderContainer, ProfileScreen } from '../Screens/index';
+
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-const OrderNavigator = () => {
+const ProfileNavigator = () => {
 	return (
-		<Stack.Navigator initialRouteName='Order'>
+		<Stack.Navigator initialRouteName='Profile'>
 			<Stack.Screen
 				name='Order'
 				options={{
@@ -14,8 +15,15 @@ const OrderNavigator = () => {
 				}}
 				component={OrderContainer}
 			/>
+			<Stack.Screen
+				name='Profile'
+				options={{
+					headerShown: false,
+				}}
+				component={ProfileScreen}
+			/>
 		</Stack.Navigator>
 	);
 };
 
-export default OrderNavigator;
+export default ProfileNavigator;

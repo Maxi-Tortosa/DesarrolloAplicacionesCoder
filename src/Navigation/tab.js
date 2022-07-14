@@ -1,8 +1,9 @@
 import CartNavigator from './cart';
 import IonicIcons from '@expo/vector-icons/Ionicons';
 import MainNavigator from './main';
-import OrderNavigator from './order';
+import ProfileNavigator from './profile';
 import React from 'react';
+import StyledText from './../Components/StyledText/index';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import theme from '../../Constants/theme';
 
@@ -19,12 +20,22 @@ const TabNavigator = () => {
 				name='HomeScreen'
 				component={MainNavigator}
 				options={{
-					tabBarLabel: 'Home',
+					tabBarLabel: ({ focused }) => (
+						<StyledText
+							style={
+								focused
+									? { fontWeight: 'bold', fontSize: 12 }
+									: { fontSize: 12 }
+							}
+							font='inter'>
+							Productos
+						</StyledText>
+					),
 					tabBarIcon: ({ focused }) => (
 						<IonicIcons
-							name={focused ? 'home' : 'home-outline'}
+							name={focused ? 'basket' : 'basket-outline'}
 							size={20}
-							color={focused ? theme.colors.primary : 'red'}
+							color={theme.colors.primary}
 						/>
 					),
 				}}
@@ -33,27 +44,47 @@ const TabNavigator = () => {
 				name='CartScreen'
 				component={CartNavigator}
 				options={{
-					tabBarLabel: 'Cart',
+					tabBarLabel: ({ focused }) => (
+						<StyledText
+							style={
+								focused
+									? { fontWeight: 'bold', fontSize: 12 }
+									: { fontSize: 12 }
+							}
+							font='inter'>
+							Carrito
+						</StyledText>
+					),
 					tabBarIcon: ({ focused }) => (
 						<IonicIcons
 							name={focused ? 'cart' : 'cart-outline'}
 							size={20}
-							color={focused ? theme.colors.primary : 'red'}
+							color={theme.colors.primary}
 						/>
 					),
 				}}
 			/>
 
 			<BottomTabs.Screen
-				name='OrderScreen'
-				component={OrderNavigator}
+				name='ProfileScreen'
+				component={ProfileNavigator}
 				options={{
-					tabBarLabel: 'Order',
+					tabBarLabel: ({ focused }) => (
+						<StyledText
+							style={
+								focused
+									? { fontWeight: 'bold', fontSize: 12 }
+									: { fontSize: 12 }
+							}
+							font='inter'>
+							Perfil
+						</StyledText>
+					),
 					tabBarIcon: ({ focused }) => (
 						<IonicIcons
-							name={focused ? 'cart' : 'cart-outline'}
+							name={focused ? 'person' : 'person-outline'}
 							size={20}
-							color={focused ? theme.colors.primary : 'red'}
+							color={theme.colors.primary}
 						/>
 					),
 				}}
