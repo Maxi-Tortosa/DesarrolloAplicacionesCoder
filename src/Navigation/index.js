@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import LoginNavigator from './login';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TabNavigator from './tab';
-import { useSelector } from 'react-redux';
+import { getCurrentUser } from '../Store/Actions/login.actions';
 
 const AppNavigator = () => {
-	const currentUser =
-		// false;
+	const dispatch = useDispatch();
+	const currentUser = useSelector((state) => state.login.email);
 
-		useSelector((state) => state.login.userId);
+	useEffect(() => {
+		dispatch(getCurrentUser());
+	});
 
+	console.log(currentUser);
 	return (
 		<SafeAreaView style={{ flex: 1, margin: 0 }}>
 			<NavigationContainer>
-				{/* {currentUser ? <TabNavigator /> : <LoginNavigator />} */}
-				<TabNavigator />
+				{currentUser ? <TabNavigator /> : <LoginNavigator />}
+				{/* <TabNavigator /> */}
 			</NavigationContainer>
 		</SafeAreaView>
 	);

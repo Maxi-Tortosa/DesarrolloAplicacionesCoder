@@ -2,4 +2,5 @@ export const loginTypes = {
 	SIGN_IN: 'SIGN_IN',
 	SIGN_OUT: 'SIGN_OUT',
 	SIGN_UP: 'SIGN_UP',
+	GET_CURRENTUSER: 'GET_CURRENTUSER',
 };

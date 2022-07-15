@@ -1,10 +1,13 @@
+import { collection, onSnapshot } from 'firebase/firestore';
+
+import { db } from '../../Firebase';
 import { loginTypes } from '../Types/login.types';
 
-const { SIGN_UP, SIGN_IN, SIGN_OUT } = loginTypes;
+const { SIGN_UP, SIGN_IN, SIGN_OUT, GET_CURRENTUSER } = loginTypes;
 
 const initialState = {
-	token: null,
-	userId: null,
+	email: null,
+	password: null,
 };
 
 const LoginReducer = (state = initialState, action) => {
@@ -12,18 +15,25 @@ const LoginReducer = (state = initialState, action) => {
 		case SIGN_UP:
 			return {
 				...state,
-				token: action.token,
-				userId: action.userId,
+				email: action.email,
+				password: action.password,
 			};
 		case SIGN_IN:
 			return {
 				...state,
-				token: action.token,
-				userId: action.userId,
+				email: action.email,
+				password: action.password,
 			};
 
 		case SIGN_OUT:
-			return { ...state, token: action.token, userId: action.userId };
+			return {
+				...state,
+				email: action.token,
+				password: action.userId,
+			};
+
+		case GET_CURRENTUSER:
+			return { ...state, email: action.email, uid: action.uid };
 		default:
 			return state;
 	}
