@@ -15,8 +15,8 @@ const AppNavigator = () => {
 	return (
 		<SafeAreaView style={{ flex: 1, margin: 0 }}>
 			<NavigationContainer>
-				{currentUser ? <TabNavigator /> : <LoginNavigator />}
-				{/* <TabNavigator /> */}
+				{/* {currentUser ? <TabNavigator /> : <LoginNavigator />} */}
+				<TabNavigator />
 			</NavigationContainer>
 		</SafeAreaView>
 	);

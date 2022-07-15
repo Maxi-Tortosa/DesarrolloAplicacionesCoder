@@ -9,3 +9,4 @@ export { default as CategoryCard } from './CategoryCard/index';
 export { default as CartItem } from './CartItem/index';
 export { default as OrderItem } from './OrderItem/index';
 export { default as RegisterModal } from './RegisterModal/index';
+export { default as Profile } from './Profile/index';

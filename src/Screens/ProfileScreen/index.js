@@ -1,6 +1,6 @@
+import { Profile, StyledButton, StyledText } from '../../Components';
 import React, { useEffect, useState } from 'react';
 
-import StyledText from '../../Components/StyledText/index';
 import { View } from 'react-native';
 import { styles } from './styles';
 
@@ -9,7 +9,7 @@ const ProfileScreen = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<StyledText>Soy el profile</StyledText>
+			<Profile onImage={(image) => console.log(image)} />
 		</View>
 	);
 };
