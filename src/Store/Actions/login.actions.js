@@ -1,4 +1,12 @@
-import { addDoc, collection } from 'firebase/firestore';
+import * as FileSystem from 'expo-file-system';
+
+import {
+	addDoc,
+	collection,
+	doc,
+	onSnapshot,
+	updateDoc,
+} from 'firebase/firestore';
 import { auth, db } from './../../Firebase/index';
 import {
 	createUserWithEmailAndPassword,
@@ -13,8 +21,7 @@ const { SIGN_UP, SIGN_IN, SIGN_OUT, GET_CURRENTUSER } = loginTypes;
 export const getCurrentUser = () => {
 	return async (dispatch) => {
 		auth.onAuthStateChanged((user) => {
-			user &&
-				dispatch({ type: GET_CURRENTUSER, email: user.email, uid: user.uid });
+			dispatch({ type: GET_CURRENTUSER, email: user.email, uid: user.uid });
 		});
 	};
 };
@@ -42,7 +49,12 @@ export const signup = (email, password) => {
 					uid: userCredential.user.uid,
 				});
 
-				addDoc(ref, { email, password, uid: userCredential.user.uid });
+				addDoc(ref, {
+					email,
+					password,
+					uid: userCredential.user.uid,
+					profilePicture: null,
+				});
 			})
 			.catch((error) => {
 				console.log(error.message);
@@ -63,5 +75,25 @@ export const signin = (email, password) => {
 			.catch((error) => {
 				console.log(error.message);
 			});
+	};
+};
+
+export const setProfilePicture = (image, userId, docId) => {
+	return async () => {
+		const fileName = image.split('/').pop();
+		const Path = FileSystem.documentDirectory + fileName;
+
+		try {
+			await FileSystem.moveAsync({
+				from: image,
+				to: Path,
+			});
+
+			const ref = doc(collection(db, 'Users'), docId);
+			updateDoc(ref, { profilePicture: Path });
+		} catch (error) {
+			console.log(error.message);
+			throw error;
+		}
 	};
 };

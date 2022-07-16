@@ -7,7 +7,7 @@ const { SIGN_UP, SIGN_IN, SIGN_OUT, GET_CURRENTUSER } = loginTypes;
 
 const initialState = {
 	email: null,
-	password: null,
+	uid: null,
 };
 
 const LoginReducer = (state = initialState, action) => {
@@ -16,20 +16,20 @@ const LoginReducer = (state = initialState, action) => {
 			return {
 				...state,
 				email: action.email,
-				password: action.password,
+				uid: action.uid,
 			};
 		case SIGN_IN:
 			return {
 				...state,
 				email: action.email,
-				password: action.password,
+				uid: action.uid,
 			};
 
 		case SIGN_OUT:
 			return {
 				...state,
 				email: action.token,
-				password: action.userId,
+				uid: action.uid,
 			};
 
 		case GET_CURRENTUSER:
