@@ -1,53 +1,27 @@
+import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
+
 import { URL_API } from '../../../Constants/firebase';
+import { db } from '../../Firebase';
 import { orderTypes } from '../Types/order.types';
 
 const { GET_ORDERS, DELETE_ORDER } = orderTypes;
 
 export const getOrders = () => {
 	return async (dispatch) => {
-		try {
-			const reponse = await fetch(`${URL_API}orders.json`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
-			const data = await reponse.json();
-
-			const orders =
-				data != null &&
-				Object.keys(data).map((key) => {
-					return {
-						...data[key],
-						id: key,
-					};
-				});
-
-			dispatch({
-				type: GET_ORDERS,
-				payload: orders,
-			});
-		} catch (error) {
-			console.log(error.message);
-		}
+		onSnapshot(
+			collection(db, 'Pedidos'),
+			(snapshot) =>
+				dispatch({
+					type: GET_ORDERS,
+					payload: snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
+				}),
+			(error) => console.log(error)
+		);
 	};
 };
 
 export const deleteOrder = (id) => {
-	return async (dispatch) => {
-		try {
-			await fetch(`${URL_API}orders/${id}.json`, {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
-			dispatch({
-				type: DELETE_ORDER,
-				orderId: id,
-			});
-		} catch (error) {
-			console.log(error.message);
-		}
+	return async () => {
+		deleteDoc(doc(db, 'Pedidos', id));
 	};
 };

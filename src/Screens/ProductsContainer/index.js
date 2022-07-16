@@ -9,8 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '../../Components';
 import { styles } from './styles';
 
-//CONTEMPLAR ELEGIR SABORES EN EL DETAIL
-
 const ProductsContainer = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const filterProducts = useSelector(

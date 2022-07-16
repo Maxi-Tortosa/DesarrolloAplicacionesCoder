@@ -41,6 +41,10 @@ const ProfileScreen = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
 			<Profile onImage={onHandlePictureChange} user={user} />
+			<StyledButton
+				onPressEvent={() => navigation.navigate('Order')}
+				text='Ir a órdenes'
+			/>
 		</View>
 	);
 };

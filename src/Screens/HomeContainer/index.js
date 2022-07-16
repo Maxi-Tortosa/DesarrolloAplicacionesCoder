@@ -13,14 +13,13 @@ import {
 } from '../../Store/Actions/category.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getProducts } from './../../Store/Actions/products.actions';
 import { signout } from './../../Store/Actions/login.actions';
 import { styles } from './styles';
 
 const HomeContainer = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const categories = useSelector((state) => state.category.categories);
-	// const currentUser = useSelector((state) => state.login);
-
 	const onSelected = (item) => {
 		dispatch(selectCategory(item.id));
 		navigation.navigate('Products', {
@@ -29,14 +28,12 @@ const HomeContainer = ({ navigation }) => {
 	};
 
 	const handleClose = () => {
-		dispatch(
-			signout()
-			// currentUser.token
-		);
+		dispatch(signout());
 	};
 
 	useEffect(() => {
 		dispatch(getCategories());
+		dispatch(getProducts());
 	}, []);
 
 	const renderItem = ({ item }) => (

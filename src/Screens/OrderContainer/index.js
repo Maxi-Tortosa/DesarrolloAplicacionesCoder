@@ -19,7 +19,7 @@ const OrdersContainer = () => {
 
 	useEffect(() => {
 		dispatch(getOrders());
-	}, [orders]);
+	}, []);
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>

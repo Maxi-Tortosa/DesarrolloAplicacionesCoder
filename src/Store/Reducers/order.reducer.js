@@ -12,11 +12,7 @@ const OrderReducer = (state = initialState, action) => {
 				...state,
 				items: action.payload,
 			};
-		case DELETE_ORDER:
-			return {
-				...state,
-				items: state.items.filter((item) => item.id !== action.orderId),
-			};
+
 		default:
 			return state;
 	}

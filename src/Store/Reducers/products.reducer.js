@@ -1,10 +1,10 @@
 import { Products } from '../../../Mocks/products';
 import { productsTypes } from './../Types/products.types';
 
-const { SELECT_PRODUCT, FILTERED_PRODUCTS } = productsTypes;
+const { SELECT_PRODUCT, FILTERED_PRODUCTS, GET_PRODUCTS } = productsTypes;
 
 const initialState = {
-	products: Products,
+	products: [],
 	filteredProducts: [],
 	selected: null,
 };
@@ -24,6 +24,12 @@ const ProductsReducer = (state = initialState, action) => {
 				filteredProducts: state.products.filter(
 					(product) => product.category === action.categoryName
 				),
+			};
+
+		case GET_PRODUCTS:
+			return {
+				...state,
+				products: action.payload,
 			};
 		default:
 			return state;
