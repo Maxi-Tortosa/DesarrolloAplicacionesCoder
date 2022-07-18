@@ -1,4 +1,5 @@
 import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
 
 import { Alert, Image, TouchableWithoutFeedback, View } from 'react-native';
 import React, { useState } from 'react';
@@ -11,15 +12,23 @@ import theme from '../../../Constants/theme';
 const Profile = ({ onImage, user }) => {
 	const mail = user && user.email;
 	const noPictureText = user && user.email.slice(0, 1);
+	const [status, requestPermission] = ImagePicker.useCameraPermissions();
 
 	const verifyPermissions = async () => {
-		const { status } = await ImagePicker.requestCameraPermissionsAsync();
-		if (status !== 'granted') {
+		if (status.status !== 'granted') {
 			Alert.alert(
-				('Permisos insuficientes',
+				'Permisos insuficientes',
 				'Necesitas permisos para usar la cámara',
-				[{ text: 'Ok' }])
+				[
+					{
+						text: 'Ok',
+						// onPress: () => {
+						// 	requestPermission();
+						// },
+					},
+				]
 			);
+
 			return false;
 		}
 		return true;

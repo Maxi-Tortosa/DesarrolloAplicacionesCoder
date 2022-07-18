@@ -2,6 +2,7 @@ import { OrderContainer, ProfileScreen } from '../Screens/index';
 
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import theme from '../../Constants/theme';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,7 +12,10 @@ const ProfileNavigator = () => {
 			<Stack.Screen
 				name='Order'
 				options={{
-					headerShown: false,
+					title: 'Mis pedidos',
+					headerStyle: {
+						backgroundColor: theme.colors.primary,
+					},
 				}}
 				component={OrderContainer}
 			/>

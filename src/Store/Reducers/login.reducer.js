@@ -33,7 +33,9 @@ const LoginReducer = (state = initialState, action) => {
 			};
 
 		case GET_CURRENTUSER:
-			return { ...state, email: action.email, uid: action.uid };
+			if (action.email !== null) {
+				return { ...state, email: action.email, uid: action.uid };
+			}
 		default:
 			return state;
 	}

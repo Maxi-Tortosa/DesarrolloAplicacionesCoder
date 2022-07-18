@@ -1,4 +1,3 @@
-import { Products } from '../../../Mocks/products';
 import { productsTypes } from './../Types/products.types';
 
 const { SELECT_PRODUCT, FILTERED_PRODUCTS, GET_PRODUCTS } = productsTypes;

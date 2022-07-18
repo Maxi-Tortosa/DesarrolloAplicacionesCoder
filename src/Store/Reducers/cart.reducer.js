@@ -1,4 +1,3 @@
-import { Cart } from '../../../Mocks/products';
 import { cartTypes } from '../Types/cart.types';
 
 const { ADD_ITEM, REMOVE_ITEM, CONFIRM_CART } = cartTypes;
@@ -8,7 +7,7 @@ const sumTotal = (list) =>
 
 const initialState = {
 	items: [],
-	total: sumTotal(Cart),
+	total: 0,
 };
 
 const CartReducer = (state = initialState, action) => {

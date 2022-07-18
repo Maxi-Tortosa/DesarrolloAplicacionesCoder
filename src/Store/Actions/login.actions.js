@@ -21,7 +21,8 @@ const { SIGN_UP, SIGN_IN, SIGN_OUT, GET_CURRENTUSER } = loginTypes;
 export const getCurrentUser = () => {
 	return async (dispatch) => {
 		auth.onAuthStateChanged((user) => {
-			dispatch({ type: GET_CURRENTUSER, email: user.email, uid: user.uid });
+			user !== null &&
+				dispatch({ type: GET_CURRENTUSER, email: user.email, uid: user.uid });
 		});
 	};
 };

@@ -1,6 +1,5 @@
 import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 
-import { URL_API } from '../../../Constants/firebase';
 import { db } from '../../Firebase';
 import { orderTypes } from '../Types/order.types';
 
@@ -21,7 +20,11 @@ export const getOrders = () => {
 };
 
 export const deleteOrder = (id) => {
-	return async () => {
+	return async (dispatch) => {
 		deleteDoc(doc(db, 'Pedidos', id));
+		dispatch({
+			type: DELETE_ORDER,
+			orderId: id,
+		});
 	};
 };
