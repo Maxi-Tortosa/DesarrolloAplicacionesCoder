@@ -12,10 +12,11 @@ import theme from '../../../Constants/theme';
 const Profile = ({ onImage, user }) => {
 	const mail = user && user.email;
 	const noPictureText = user && user.email.slice(0, 1);
-	const [status, requestPermission] = ImagePicker.useCameraPermissions();
 
 	const verifyPermissions = async () => {
-		if (status.status !== 'granted') {
+		const { status } = await ImagePicker.requestCameraPermissionsAsync();
+
+		if (status !== 'granted') {
 			Alert.alert(
 				'Permisos insuficientes',
 				'Necesitas permisos para usar la cámara',
