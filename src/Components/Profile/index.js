@@ -15,7 +15,6 @@ const Profile = ({ onImage, user }) => {
 
 	const verifyPermissions = async () => {
 		const { status } = await ImagePicker.requestCameraPermissionsAsync();
-
 		if (status !== 'granted') {
 			Alert.alert(
 				'Permisos insuficientes',
@@ -23,6 +22,7 @@ const Profile = ({ onImage, user }) => {
 				[
 					{
 						text: 'Ok',
+						// onPress: () => verifyPermissions(),
 					},
 				]
 			);
@@ -43,7 +43,11 @@ const Profile = ({ onImage, user }) => {
 			quality: 0.7,
 		});
 
-		onImage(image.uri);
+		if (!image.split) {
+			Alert.alert('No hay foto');
+		} else {
+			onImage(image.uri);
+		}
 	};
 
 	return (
