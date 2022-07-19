@@ -1,6 +1,6 @@
 import { cartTypes } from '../Types/cart.types';
 
-const { ADD_ITEM, REMOVE_ITEM, CONFIRM_CART } = cartTypes;
+const { ADD_ITEM, REMOVE_ITEM, CONFIRM_CART, GET_ITEMS } = cartTypes;
 
 const sumTotal = (list) =>
 	list.map((item) => item.quantity * item.price).reduce((a, b) => a + b, 0);
@@ -12,6 +12,13 @@ const initialState = {
 
 const CartReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case GET_ITEMS:
+			return {
+				...state,
+				items: action.items,
+				total: sumTotal(action.items),
+			};
+
 		case ADD_ITEM:
 			let updateCart = [];
 			if (state.items.find((item) => item.id === action.item.id)) {
@@ -28,6 +35,7 @@ const CartReducer = (state = initialState, action) => {
 		case REMOVE_ITEM:
 			const filteredCart = state.items.filter((item) => item.id !== action.id);
 			return { ...state, items: filteredCart, total: sumTotal(filteredCart) };
+
 		case CONFIRM_CART:
 			return { ...state, items: [], total: 0 };
 		default:

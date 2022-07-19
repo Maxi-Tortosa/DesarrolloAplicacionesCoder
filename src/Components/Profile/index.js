@@ -22,9 +22,6 @@ const Profile = ({ onImage, user }) => {
 				[
 					{
 						text: 'Ok',
-						// onPress: () => {
-						// 	requestPermission();
-						// },
 					},
 				]
 			);

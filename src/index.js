@@ -5,9 +5,7 @@ import { init } from './db';
 import store from './Store/index';
 
 init()
-	.then(() => {
-		console.log('DB initialized');
-	})
+	.then(() => {})
 	.catch((err) => {
 		console.log('Error initializing DB', err);
 	});

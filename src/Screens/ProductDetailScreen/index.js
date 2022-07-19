@@ -9,10 +9,13 @@ import { styles } from './styles';
 const ProductDetailScreen = () => {
 	const dispatch = useDispatch();
 	const product = useSelector((state) => state.products.selected);
+	const cart = useSelector((state) => state.cart.items);
 	const [amount, setAmount] = useState(0);
 
 	const onHandlerAddToCart = () => {
-		dispatch(addItem(product, amount));
+		const repeat = cart.find((elem) => elem.code === product.id);
+
+		dispatch(addItem(product, amount, repeat));
 	};
 
 	return (

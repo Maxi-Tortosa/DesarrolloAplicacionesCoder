@@ -1,13 +1,15 @@
 import { FlatList, TouchableOpacity, View } from 'react-native';
-import { confirmCart, removeItem } from '../../Store/Actions/cart.actions';
+import React, { useEffect } from 'react';
+import {
+	confirmCart,
+	getProducts,
+	removeItem,
+} from '../../Store/Actions/cart.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { CartItem } from '../../Components/index';
-import React from 'react';
 import { StyledText } from '../../Components';
 import { styles } from './styles';
-
-// import { confirmCart, removeItem } from '../../store/actions/cart.action';
 
 const CartContainer = () => {
 	const dispatch = useDispatch();
@@ -18,6 +20,10 @@ const CartContainer = () => {
 	const onHandlerConfirmCart = () => {
 		dispatch(confirmCart(cart, total));
 	};
+
+	useEffect(() => {
+		dispatch(getProducts());
+	});
 
 	const renderItem = ({ item }) => (
 		<CartItem item={item} onDelete={onHandlerDelete} />
