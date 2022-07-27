@@ -1,18 +1,17 @@
 import { Profile, StyledButton, StyledText } from '../../Components';
 import React, { useEffect, useState } from 'react';
 import { collection, doc, onSnapshot } from 'firebase/firestore';
+import { setProfilePicture, signout } from '../../Store/Actions/login.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { View } from 'react-native';
 import { db } from '../../Firebase';
-import { setProfilePicture } from '../../Store/Actions/login.actions';
 import { styles } from './styles';
 
 const ProfileScreen = ({ navigation }) => {
 	const [user, setUser] = useState(null);
 	const [userId, setUserId] = useState(null);
 	const dispatch = useDispatch();
-
 	const currentUserUid = useSelector((state) => state.login.uid);
 
 	useEffect(() => {
@@ -30,12 +29,12 @@ const ProfileScreen = ({ navigation }) => {
 		);
 	}, []);
 
-	// useEffect(() => {
-	// 	currentUserUid && dispatch(getProfilePicture(currentUserUid));
-	// }, [currentUserUid]);
-
 	const onHandlePictureChange = (image) => {
 		dispatch(setProfilePicture(image, currentUserUid, userId));
+	};
+
+	const handleClose = () => {
+		dispatch(signout());
 	};
 
 	return (
@@ -45,6 +44,7 @@ const ProfileScreen = ({ navigation }) => {
 				onPressEvent={() => navigation.navigate('Order')}
 				text='Ir a órdenes'
 			/>
+			<StyledButton text='Cerrar sesión' onPressEvent={handleClose} />
 		</View>
 	);
 };

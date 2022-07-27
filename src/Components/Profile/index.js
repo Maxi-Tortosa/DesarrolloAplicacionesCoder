@@ -1,5 +1,4 @@
 import * as ImagePicker from 'expo-image-picker';
-import * as Permissions from 'expo-permissions';
 
 import { Alert, Image, TouchableWithoutFeedback, View } from 'react-native';
 import React, { useState } from 'react';
@@ -43,8 +42,8 @@ const Profile = ({ onImage, user }) => {
 			quality: 0.7,
 		});
 
-		if (!image.split) {
-			Alert.alert('No hay foto');
+		if (image.uri === undefined) {
+			Alert.alert('No has seleccionado una foto');
 		} else {
 			onImage(image.uri);
 		}
