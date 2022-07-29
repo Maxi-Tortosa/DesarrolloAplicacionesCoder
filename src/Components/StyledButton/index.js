@@ -7,10 +7,12 @@ import { styles } from './styles.js';
 const StyledButton = ({
 	style,
 	text,
-	fontColor = null,
+	fontColor,
+	fontSize,
 	backgroundColor = 'white',
 	onPressEvent = null,
 	prop,
+	font = 'inter',
 }) => {
 	const handleOnPress = (e) =>
 		onPressEvent ? onPressEvent(e, text, prop) : null;
@@ -20,11 +22,12 @@ const StyledButton = ({
 			style={{
 				...styles.button,
 				...style,
-				fontColor: fontColor,
 				backgroundColor: backgroundColor,
 			}}
 			onPress={handleOnPress}>
-			<StyledText font='inter'>{text}</StyledText>
+			<StyledText style={{ color: fontColor, fontSize: fontSize }} font={font}>
+				{text}
+			</StyledText>
 		</TouchableOpacity>
 	);
 };

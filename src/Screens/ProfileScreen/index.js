@@ -1,6 +1,6 @@
-import { Profile, StyledButton, StyledText } from '../../Components';
+import { Profile, StyledButton } from '../../Components';
 import React, { useEffect, useState } from 'react';
-import { collection, doc, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { setProfilePicture, signout } from '../../Store/Actions/login.actions';
 import { useDispatch, useSelector } from 'react-redux';
 

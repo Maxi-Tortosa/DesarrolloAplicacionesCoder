@@ -1,9 +1,9 @@
 import * as ImagePicker from 'expo-image-picker';
 
 import { Alert, Image, TouchableWithoutFeedback, View } from 'react-native';
-import React, { useState } from 'react';
 
 import IonicIcons from '@expo/vector-icons/Ionicons';
+import React from 'react';
 import StyledText from '../StyledText';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';

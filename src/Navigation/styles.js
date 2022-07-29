@@ -3,9 +3,6 @@ import theme from '../../Constants/theme';
 
 export const styles = StyleSheet.create({
 	headerTitle: {
-		color: theme.colors.primary,
-		fontWeight: 'bold',
-		fontSize: 20,
-		margin: 0,
+		fontSize: 18,
 	},
 });

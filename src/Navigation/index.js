@@ -1,4 +1,3 @@
-import { ActivityIndicator, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,23 +11,25 @@ import theme from '../../Constants/theme';
 
 const AppNavigator = () => {
 	const dispatch = useDispatch();
-	const currentUser = useSelector((state) => state.login.email);
+	const [pending, setPending] = useState(true);
+	const logged = useSelector((state) => state.login.uid);
 
 	useEffect(() => {
 		setTimeout(() => {
 			dispatch(getCurrentUser());
+			setPending(false);
 		}, 1500);
-	}, []);
+	}, [logged]);
 
 	return (
 		<SafeAreaView style={{ flex: 1, margin: 0 }}>
 			<NavigationContainer>
-				{currentUser === null ? (
-					<Loader size={45} />
-				) : !currentUser ? (
-					<LoginNavigator />
-				) : (
+				{pending ? (
+					<Loader color={theme.colors.primary} size={55} />
+				) : logged ? (
 					<TabNavigator />
+				) : (
+					<LoginNavigator />
 				)}
 			</NavigationContainer>
 		</SafeAreaView>

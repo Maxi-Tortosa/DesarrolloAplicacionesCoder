@@ -5,9 +5,10 @@ import {
 	ProductDetailScreen,
 	ProductsContainer,
 } from '../Screens/index';
+import { StyledButton, StyledText } from '../Components/index';
 
 import React from 'react';
-import { StyledText } from '../Components/index';
+import { View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { styles } from './styles';
 import theme from '../../Constants/theme';
@@ -28,7 +29,17 @@ const MainNavigator = () => {
 				name='Products'
 				component={ProductsContainer}
 				options={({ route }) => ({
-					title: route.params.name,
+					headerTitle: (props) => (
+						<View style={{ width: 280 }}>
+							<StyledText
+								font='interBold'
+								style={styles.headerTitle}
+								lines={1}
+								ellipsis='tail'>
+								{route.params.name}
+							</StyledText>
+						</View>
+					),
 					headerStyle: {
 						backgroundColor: theme.colors.primary,
 					},
@@ -38,7 +49,17 @@ const MainNavigator = () => {
 				name='ProductDetail'
 				component={ProductDetailScreen}
 				options={({ route }) => ({
-					title: route.params.name,
+					headerTitle: (props) => (
+						<View style={{ width: 280 }}>
+							<StyledText
+								font='interBold'
+								style={styles.headerTitle}
+								lines={1}
+								ellipsis='tail'>
+								{route.params.name}
+							</StyledText>
+						</View>
+					),
 					headerStyle: {
 						backgroundColor: theme.colors.primary,
 					},

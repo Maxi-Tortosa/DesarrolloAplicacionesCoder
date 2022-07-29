@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import theme from '../../../Constants/theme';
 
 export const styles = StyleSheet.create({
 	container: {
@@ -6,16 +7,7 @@ export const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		backgroundColor: 'white',
-	},
-
-	searcherInput: {
-		width: '85%',
-		fontSize: 15,
-		marginTop: 30,
-		marginBottom: 30,
-		borderWidth: 1,
-		elevation: 5,
+		backgroundColor: theme.colors.white,
 	},
 
 	categoryList: { flex: 1 },

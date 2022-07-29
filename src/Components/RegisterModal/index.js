@@ -5,9 +5,9 @@ import {
 	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
-import React, { useState } from 'react';
 
 import Input from '../Input';
+import React from 'react';
 import StyledButton from '../StyledButton';
 import StyledText from './../StyledText/index';
 import { signup } from '../../Store/Actions/login.actions';

@@ -1,7 +1,9 @@
 import { OrderContainer, ProfileScreen } from '../Screens/index';
 
 import React from 'react';
+import { StyledText } from '../Components';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { styles } from './styles';
 import theme from '../../Constants/theme';
 
 const Stack = createNativeStackNavigator();
@@ -12,7 +14,11 @@ const ProfileNavigator = () => {
 			<Stack.Screen
 				name='Order'
 				options={{
-					title: 'Mis pedidos',
+					headerTitle: (props) => (
+						<StyledText font='interBold' style={styles.headerTitle}>
+							{'Mis pedidos'}
+						</StyledText>
+					),
 					headerStyle: {
 						backgroundColor: theme.colors.primary,
 					},

@@ -21,18 +21,6 @@ const ProductsContainer = ({ navigation }) => {
 		dispatch(filteredProducts(category.name));
 	}, []);
 
-	// useEffect(() => {
-	// 	onSnapshot(
-	// 		query(collection(db, 'Productos'), where('category', '==', name)),
-	// 		(snapshot) =>
-	// 			setProductosFiltrados(
-	// 				snapshot.docs.map((doc) => ({ ...doc.data(), ['id']: doc.id }))
-	// 			),
-
-	// 		(error) => console.warn('error', error)
-	// 	);
-	// }, []);
-
 	const onPress = (item) => {
 		dispatch(selectProduct(item.id));
 		navigation.navigate('ProductDetail', {
