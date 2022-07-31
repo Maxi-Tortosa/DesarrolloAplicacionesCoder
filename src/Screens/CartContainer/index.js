@@ -23,7 +23,7 @@ const CartContainer = () => {
 
 	useEffect(() => {
 		dispatch(getProducts());
-	});
+	}, []);
 
 	const renderItem = ({ item }) => (
 		<CartItem item={item} onDelete={onHandlerDelete} />

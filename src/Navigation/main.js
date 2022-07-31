@@ -48,7 +48,7 @@ const MainNavigator = () => {
 			<Stack.Screen
 				name='ProductDetail'
 				component={ProductDetailScreen}
-				options={({ route }) => ({
+				options={() => ({
 					headerTitle: (props) => (
 						<View style={{ width: 280 }}>
 							<StyledText font='interBold' style={styles.headerTitle}>

@@ -1,4 +1,4 @@
-import { CategoryCard, Header } from '../../Components/index';
+import { CategoryCard, Header, StyledText } from '../../Components/index';
 import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {
@@ -32,7 +32,9 @@ const HomeContainer = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
 			<Header />
-
+			<StyledText font='interBold' style={styles.title}>
+				¡Bienvenidas/os a nuestra tienda!
+			</StyledText>
 			<FlatList
 				style={styles.categoryList}
 				data={categories}

@@ -1,5 +1,8 @@
+import { Dimensions } from 'react-native';
 import { StyleSheet } from 'react-native';
 import theme from '../../../Constants/theme';
+
+const { width, height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
 	container: {
@@ -9,15 +12,20 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: theme.colors.white,
 	},
-
-	categoryList: { flex: 1 },
-	categoryText: { fontSize: 18, lineHeight: 20, marginLeft: 30, marginTop: 15 },
+	title: {
+		fontSize: theme.fontSize.titleL,
+		textAlign: 'center',
+		width: width / 1.2,
+		marginTop: theme.margin.t,
+		marginBottom: theme.margin.o,
+	},
+	categoryList: { flex: 1, width: width },
 
 	noproductsText: {
 		width: '90%',
-		fontSize: 16,
+		fontSize: theme.fontSize.titleS,
 		lineHeight: 20,
-		marginLeft: 30,
-		marginVertical: 20,
+		marginLeft: theme.margin.th,
+		marginVertical: theme.margin.t,
 	},
 });

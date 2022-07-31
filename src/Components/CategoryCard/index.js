@@ -5,7 +5,7 @@ import StyledText from './../StyledText/index';
 import { styles } from './styles';
 
 const CategoryCard = ({ item, onSelected }) => {
-	const { id, name, catImg } = item;
+	const { name, catImg } = item;
 
 	const image = { uri: catImg };
 
