@@ -24,7 +24,7 @@ const ProductsContainer = ({ navigation }) => {
 	const onPress = (item) => {
 		dispatch(selectProduct(item.id));
 		navigation.navigate('ProductDetail', {
-			name: item.name,
+			category: category.name,
 		});
 	};
 

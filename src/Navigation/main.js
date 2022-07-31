@@ -51,12 +51,8 @@ const MainNavigator = () => {
 				options={({ route }) => ({
 					headerTitle: (props) => (
 						<View style={{ width: 280 }}>
-							<StyledText
-								font='interBold'
-								style={styles.headerTitle}
-								lines={1}
-								ellipsis='tail'>
-								{route.params.name}
+							<StyledText font='interBold' style={styles.headerTitle}>
+								¡Hacé tu pedido!
 							</StyledText>
 						</View>
 					),

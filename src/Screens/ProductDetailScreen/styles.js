@@ -15,20 +15,51 @@ export const styles = StyleSheet.create({
 	},
 	details: {
 		width: width / 1.2,
-		marginBottom: 30,
+		marginBottom: theme.margin.t,
 	},
 	image: {
 		width: 200,
 		height: 200,
 		borderRadius: 200,
 		alignSelf: 'center',
-		marginBottom: 30,
+		marginBottom: theme.margin.th,
+	},
+	nameText: {
+		fontSize: theme.fontSize.detailTitle,
+		marginBottom: theme.margin.th,
 	},
 	text: {
-		fontSize: 18,
-		marginBottom: 10,
+		fontSize: theme.fontSize.detailText,
+		marginBottom: theme.margin.o,
 	},
-	counterText: { fontSize: 18 },
+	priceText: {
+		fontSize: theme.fontSize.detailPrice,
+		marginBottom: theme.margin.t,
+	},
+	counterText: { fontSize: theme.fontSize.counterText },
+	descriptionTitle: {
+		fontSize: theme.fontSize.detailText,
+		marginBottom: theme.margin.o,
+		marginTop: theme.margin.t,
+	},
+	mainCharacteristics: {
+		fontSize: theme.fontSize.detailText,
+		marginBottom: theme.margin.o,
+	},
+	item: {
+		width: width / 1.2,
+		backgroundColor: theme.colors.lightGrey,
+		marginBottom: theme.margin.o,
+		padding: theme.padding.o,
+		display: 'flex',
+		flexDirection: 'row',
+	},
+	itemTitle: {
+		fontSize: theme.fontSize.detailItemText,
+		width: '50%',
+	},
+	itemText: { fontSize: theme.fontSize.detailItemText, width: '50%' },
+
 	addButton: {
 		width: width / 1.2,
 		paddingVertical: 12,
