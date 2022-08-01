@@ -5,7 +5,7 @@ import {
 	ProductDetailScreen,
 	ProductsContainer,
 } from '../Screens/index';
-import { StyledButton, StyledText } from '../Components/index';
+import { HeaderTitle, StyledButton, StyledText } from '../Components/index';
 
 import React from 'react';
 import { View } from 'react-native';
@@ -30,15 +30,7 @@ const MainNavigator = () => {
 				component={ProductsContainer}
 				options={({ route }) => ({
 					headerTitle: (props) => (
-						<View style={{ width: 280 }}>
-							<StyledText
-								font='interBold'
-								style={styles.headerTitle}
-								lines={1}
-								ellipsis='tail'>
-								{route.params.name}
-							</StyledText>
-						</View>
+						<HeaderTitle>{route.params.name}</HeaderTitle>
 					),
 					headerStyle: {
 						backgroundColor: theme.colors.primary,
@@ -49,13 +41,7 @@ const MainNavigator = () => {
 				name='ProductDetail'
 				component={ProductDetailScreen}
 				options={() => ({
-					headerTitle: (props) => (
-						<View style={{ width: 280 }}>
-							<StyledText font='interBold' style={styles.headerTitle}>
-								¡Hacé tu pedido!
-							</StyledText>
-						</View>
-					),
+					headerTitle: (props) => <HeaderTitle>¡Hacé tu pedido!</HeaderTitle>,
 					headerStyle: {
 						backgroundColor: theme.colors.primary,
 					},

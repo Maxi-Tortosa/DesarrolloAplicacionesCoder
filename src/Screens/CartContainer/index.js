@@ -31,33 +31,34 @@ const CartContainer = () => {
 
 	return (
 		<View style={styles.container}>
-			<StyledText font='inter'>Este es el detalle de tu pedido</StyledText>
+			<StyledText font='inter' style={styles.title}>
+				Este es el detalle de tu pedido
+			</StyledText>
 			{/* GENERAR MODAL PARA CONFIRMAR */}
-			<View style={styles.container}>
-				<View style={styles.cartList}>
-					<FlatList
-						data={cart}
-						renderItem={renderItem}
-						keyExtractor={(item) => item.id}
-					/>
-				</View>
-				<View style={styles.footer}>
-					<TouchableOpacity
-						style={styles.buttonConfirm}
-						onPress={() => onHandlerConfirmCart()}>
-						<StyledText font='inter' style={styles.buttonText}>
-							Confirm
+
+			<View style={styles.cartList}>
+				<FlatList
+					data={cart}
+					renderItem={renderItem}
+					keyExtractor={(item) => item.id}
+				/>
+			</View>
+			<View style={styles.footer}>
+				<TouchableOpacity
+					style={styles.buttonConfirm}
+					onPress={() => onHandlerConfirmCart()}>
+					<StyledText font='inter' style={styles.buttonText}>
+						Confirm
+					</StyledText>
+					<View style={styles.totalContainer}>
+						<StyledText font='inter' style={styles.totalTitle}>
+							Total
 						</StyledText>
-						<View style={styles.totalContainer}>
-							<StyledText font='inter' style={styles.totalTitle}>
-								Total
-							</StyledText>
-							<StyledText font='inter' style={styles.total}>
-								${total}
-							</StyledText>
-						</View>
-					</TouchableOpacity>
-				</View>
+						<StyledText font='inter' style={styles.total}>
+							${total}
+						</StyledText>
+					</View>
+				</TouchableOpacity>
 			</View>
 		</View>
 	);

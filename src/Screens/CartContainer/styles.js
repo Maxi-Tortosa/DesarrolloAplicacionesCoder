@@ -1,25 +1,26 @@
+import { Dimensions } from 'react-native';
 import { StyleSheet } from 'react-native';
 import theme from '../../../Constants/theme';
+
+const { width, height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 10,
 		backgroundColor: theme.colors.white,
+		paddingHorizontal: width / 12,
 	},
+	title: { fontSize: theme.fontSize.titleS },
 	cartList: {
 		flex: 1,
 	},
 	footer: {
 		borderTopColor: theme.colors.primary,
 		borderTopWidth: 1,
-		paddingVertical: 10,
 	},
 	buttonConfirm: {
 		backgroundColor: theme.colors.primary,
 		borderRadius: 5,
-		paddingHorizontal: 10,
-		paddingVertical: 12,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
