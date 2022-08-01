@@ -3,7 +3,7 @@ import StyledText from '../StyledText';
 import { View } from 'react-native';
 import { styles } from './styles';
 
-const HeaderTitle = ({ children, contStyle, textStyle }) => {
+const HeaderTitle = ({ contStyle, textStyle, children }) => {
 	return (
 		<View style={{ ...contStyle, ...styles.headerContainer }}>
 			<StyledText

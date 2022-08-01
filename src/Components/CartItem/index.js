@@ -13,18 +13,24 @@ const CartItem = ({ item, onDelete }) => {
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.headerContainer}>
-				<StyledText style={styles.header}>{item.name}</StyledText>
+			<View style={styles.details}>
+				<StyledText
+					font='inter'
+					style={styles.detailsName}
+					lines={1}
+					ellipsis='tail'>
+					{item.name}
+				</StyledText>
+				<StyledText font='inter' style={styles.detailQty}>
+					{item.quantity} un
+				</StyledText>
+				<StyledText font='interBold' style={styles.detailPrice}>
+					${Number(item.price).toFixed(2)}
+				</StyledText>
 			</View>
-			<View style={styles.containerDetail}>
-				<View style={styles.detail}>
-					<StyledText style={styles.detailQty}>{item.quantity}</StyledText>
-					<StyledText style={styles.detailPrice}>${item.price}</StyledText>
-				</View>
-				<TouchableOpacity onPress={() => handlerPress(item.code)}>
-					<IonicIcons name='trash' size={20} color={theme.colors.primary} />
-				</TouchableOpacity>
-			</View>
+			<TouchableOpacity onPress={() => handlerPress(item.code)}>
+				<IonicIcons name='trash' size={20} color={theme.colors.primary} />
+			</TouchableOpacity>
 		</View>
 	);
 };

@@ -25,7 +25,12 @@ const StyledButton = ({
 				backgroundColor: backgroundColor,
 			}}
 			onPress={handleOnPress}>
-			<StyledText style={{ color: fontColor, fontSize: fontSize }} font={font}>
+			<StyledText
+				style={{
+					color: fontColor,
+					fontSize: fontSize,
+				}}
+				font={font}>
 				{text}
 			</StyledText>
 		</TouchableOpacity>

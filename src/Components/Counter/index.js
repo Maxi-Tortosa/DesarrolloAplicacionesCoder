@@ -14,7 +14,7 @@ const Counter = ({
 	addButtonStyle,
 }) => {
 	const handlerPress = (e, text) => {
-		(text == '-') & (amount > 0) &&
+		(text == '-') & (amount > 1) &&
 			setAmount((currentAmount) => currentAmount - 1);
 		(text == '+') & (amount < limit) &&
 			setAmount((currentAmount) => currentAmount + 1);

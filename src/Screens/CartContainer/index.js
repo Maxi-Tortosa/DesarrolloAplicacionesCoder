@@ -1,3 +1,4 @@
+import { CartItem, StyledButton, StyledText } from '../../Components/index';
 import { FlatList, TouchableOpacity, View } from 'react-native';
 import React, { useEffect } from 'react';
 import {
@@ -7,11 +8,10 @@ import {
 } from '../../Store/Actions/cart.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { CartItem } from '../../Components/index';
-import { StyledText } from '../../Components';
 import { styles } from './styles';
+import theme from '../../../Constants/theme';
 
-const CartContainer = () => {
+const CartContainer = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.items);
 	const total = useSelector((state) => state.cart.total);
@@ -29,11 +29,11 @@ const CartContainer = () => {
 		<CartItem item={item} onDelete={onHandlerDelete} />
 	);
 
+	const handlePress = () => {
+		navigation.navigate('Home');
+	};
 	return (
 		<View style={styles.container}>
-			<StyledText font='inter' style={styles.title}>
-				Este es el detalle de tu pedido
-			</StyledText>
 			{/* GENERAR MODAL PARA CONFIRMAR */}
 
 			<View style={styles.cartList}>
@@ -41,25 +41,45 @@ const CartContainer = () => {
 					data={cart}
 					renderItem={renderItem}
 					keyExtractor={(item) => item.id}
+					ListEmptyComponent={() => {
+						return (
+							<>
+								<StyledText font='inter' style={styles.noProductsText}>
+									No existen artículos en tu carrito, animate y probá nuestros
+									productos
+								</StyledText>
+								<StyledButton
+									onPressEvent={handlePress}
+									style={{ marginTop: theme.margin.th }}
+									text='Hacé tu pedido ahora'
+									backgroundColor={theme.colors.lightGrey}
+									fontSize={theme.fontSize.titleS}
+									font='interBold'
+								/>
+							</>
+						);
+					}}
 				/>
 			</View>
-			<View style={styles.footer}>
-				<TouchableOpacity
-					style={styles.buttonConfirm}
-					onPress={() => onHandlerConfirmCart()}>
-					<StyledText font='inter' style={styles.buttonText}>
-						Confirm
-					</StyledText>
-					<View style={styles.totalContainer}>
-						<StyledText font='inter' style={styles.totalTitle}>
-							Total
+			{cart.length > 0 && (
+				<View style={styles.footer}>
+					<TouchableOpacity
+						style={styles.buttonConfirm}
+						onPress={() => onHandlerConfirmCart()}>
+						<StyledText font='inter' style={styles.buttonText}>
+							Confirmar
 						</StyledText>
-						<StyledText font='inter' style={styles.total}>
-							${total}
-						</StyledText>
-					</View>
-				</TouchableOpacity>
-			</View>
+						<View style={styles.totalContainer}>
+							<StyledText font='interBold' style={styles.totalTitle}>
+								Total
+							</StyledText>
+							<StyledText font='interBold' style={styles.total}>
+								${total.toFixed(2)}
+							</StyledText>
+						</View>
+					</TouchableOpacity>
+				</View>
+			)}
 		</View>
 	);
 };

@@ -9,8 +9,13 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: theme.colors.white,
 		paddingHorizontal: width / 12,
+		paddingTop: theme.margin.t,
 	},
-	title: { fontSize: theme.fontSize.titleS },
+
+	noProductsText: {
+		fontSize: theme.fontSize.titleS,
+	},
+
 	cartList: {
 		flex: 1,
 	},
@@ -21,15 +26,16 @@ export const styles = StyleSheet.create({
 	buttonConfirm: {
 		backgroundColor: theme.colors.primary,
 		borderRadius: 5,
+		marginVertical: theme.margin.t,
+		paddingVertical: theme.padding.o,
+		paddingHorizontal: theme.margin.o,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
 	},
-	buttonText: {
-		fontSize: 14,
-	},
+	buttonText: { flex: 0.5, fontSize: 14 },
 	totalContainer: {
-		flex: 0.4,
+		flex: 0.5,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
