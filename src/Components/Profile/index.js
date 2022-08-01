@@ -21,7 +21,6 @@ const Profile = ({ onImage, user }) => {
 				[
 					{
 						text: 'Ok',
-						// onPress: () => verifyPermissions(),
 					},
 				]
 			);
@@ -49,17 +48,18 @@ const Profile = ({ onImage, user }) => {
 		}
 	};
 
+	console.log(noPictureText);
 	return (
 		<>
 			{user && (
 				<View style={styles.container}>
 					<TouchableWithoutFeedback onPress={handleTakePicture}>
 						<View style={styles.preview}>
-							{!user.profilePicture ? (
+							{user.profilePicture === null ? (
 								<StyledText
 									style={{ fontSize: 40, color: theme.colors.white }}
 									font='interBold'>
-									{noPictureText}
+									{noPictureText.toUpperCase()}
 								</StyledText>
 							) : (
 								<Image

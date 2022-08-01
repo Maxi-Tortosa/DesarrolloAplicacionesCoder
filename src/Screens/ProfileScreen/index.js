@@ -1,4 +1,4 @@
-import { Profile, StyledButton } from '../../Components';
+import { Loader, Profile, StyledButton } from '../../Components';
 import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { setProfilePicture, signout } from '../../Store/Actions/login.actions';
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { View } from 'react-native';
 import { db } from '../../Firebase';
 import { styles } from './styles';
+import theme from '../../../Constants/theme';
 
 const ProfileScreen = ({ navigation }) => {
 	const [user, setUser] = useState(null);
@@ -33,19 +34,38 @@ const ProfileScreen = ({ navigation }) => {
 		dispatch(setProfilePicture(image, currentUserUid, userId));
 	};
 
-	const handleClose = () => {
+	const handleSignOut = () => {
 		dispatch(signout());
 	};
 
+	const handleNavigate = () => navigation.navigate('Order');
+
 	return (
-		<View style={styles.container}>
-			<Profile onImage={onHandlePictureChange} user={user} />
-			<StyledButton
-				onPressEvent={() => navigation.navigate('Order')}
-				text='Ir a órdenes'
-			/>
-			<StyledButton text='Cerrar sesión' onPressEvent={handleClose} />
-		</View>
+		<>
+			{!user ? (
+				<Loader color={theme.colors.primary} size={55} />
+			) : (
+				<View style={styles.container}>
+					<Profile onImage={onHandlePictureChange} user={user} />
+					<StyledButton
+						onPressEvent={handleNavigate}
+						style={{ marginTop: theme.margin.th }}
+						backgroundColor={theme.colors.primary}
+						fontSize={theme.fontSize.titleS}
+						font='interBold'
+						text='Ir a órdenes'
+					/>
+					<StyledButton
+						text='Cerrar sesión'
+						style={styles.signoutButton}
+						backgroundColor={theme.colors.white}
+						fontSize={theme.fontSize.titleS}
+						font='interBold'
+						onPressEvent={handleSignOut}
+					/>
+				</View>
+			)}
+		</>
 	);
 };
 

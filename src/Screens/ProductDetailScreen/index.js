@@ -1,9 +1,9 @@
 import { Counter, Loader, StyledText } from '../../Components';
 import { Image, SafeAreaView, ScrollView, View } from 'react-native';
 import React, { useState } from 'react';
+import { addItem, getProducts } from './../../Store/Actions/cart.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addItem } from './../../Store/Actions/cart.actions';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 
@@ -23,6 +23,7 @@ const ProductDetailScreen = ({ route, navigation }) => {
 		const repeat = cart.find((elem) => elem.code === product.id);
 		dispatch(addItem(product, amount, repeat));
 		setPending(true);
+		dispatch(getProducts());
 		setTimeout(() => {
 			navigation.navigate('CartScreen');
 			setPending(false);
@@ -31,7 +32,7 @@ const ProductDetailScreen = ({ route, navigation }) => {
 
 	return (
 		<SafeAreaView style={styles.safeArea}>
-			{pending ? (
+			{pending || !product ? (
 				<Loader color={theme.colors.primary} size={55} />
 			) : (
 				<ScrollView>

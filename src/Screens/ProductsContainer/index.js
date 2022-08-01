@@ -1,3 +1,4 @@
+import { Card, Loader } from '../../Components';
 import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {
@@ -6,8 +7,8 @@ import {
 } from '../../Store/Actions/products.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Card } from '../../Components';
 import { styles } from './styles';
+import theme from '../../../Constants/theme';
 
 const ProductsContainer = ({ navigation }) => {
 	const dispatch = useDispatch();
@@ -32,13 +33,17 @@ const ProductsContainer = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<FlatList
-				style={styles.productsList}
-				data={filterProducts}
-				renderItem={renderItem}
-				keyExtractor={(item) => item.id}
-				numColumns={2}
-			/>
+			{!filterProducts ? (
+				<Loader color={theme.colors.primary} size={55} />
+			) : (
+				<FlatList
+					style={styles.productsList}
+					data={filterProducts}
+					renderItem={renderItem}
+					keyExtractor={(item) => item.id}
+					numColumns={2}
+				/>
+			)}
 		</View>
 	);
 };
