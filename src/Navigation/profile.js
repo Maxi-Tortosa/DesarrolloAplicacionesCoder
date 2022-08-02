@@ -1,4 +1,4 @@
-import { OrderContainer, ProfileScreen } from '../Screens/index';
+import { OrdersScreen, ProfileScreen } from '../Screens/index';
 
 import { HeaderTitle } from '../Components';
 import React from 'react';
@@ -19,7 +19,7 @@ const ProfileNavigator = () => {
 						backgroundColor: theme.colors.primary,
 					},
 				}}
-				component={OrderContainer}
+				component={OrdersScreen}
 			/>
 			<Stack.Screen
 				name='Profile'

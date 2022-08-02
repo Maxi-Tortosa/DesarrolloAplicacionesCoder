@@ -1,4 +1,4 @@
-import { LoginContainer } from '../Screens/index';
+import { LoginScreen } from '../Screens/index';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { styles } from './styles';
@@ -13,7 +13,7 @@ const LoginNavigator = () => {
 					headerShown: false,
 				}}
 				name='Login'
-				component={LoginContainer}
+				component={LoginScreen}
 			/>
 		</Stack.Navigator>
 	);

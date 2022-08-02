@@ -28,8 +28,8 @@ const LoginReducer = (state = initialState, action) => {
 		case SIGN_OUT:
 			return {
 				...state,
-				email: action.token,
-				uid: action.uid,
+				email: null,
+				uid: null,
 			};
 
 		case GET_CURRENTUSER:

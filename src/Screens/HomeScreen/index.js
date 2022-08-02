@@ -12,11 +12,11 @@ import {
 } from '../../Store/Actions/category.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getProducts } from './../../Store/Actions/products.actions';
+import { getProducts } from '../../Store/Actions/products.actions';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 
-const HomeContainer = ({ navigation }) => {
+const HomeScreen = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const categories = useSelector((state) => state.category.categories);
 	const onSelected = (item) => {
@@ -58,4 +58,4 @@ const HomeContainer = ({ navigation }) => {
 	);
 };
 
-export default HomeContainer;
+export default HomeScreen;

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 
-const OrdersContainer = ({ navigation }) => {
+const OrdersScreen = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const orders = useSelector((state) => state.order.items);
 
@@ -62,4 +62,4 @@ const OrdersContainer = ({ navigation }) => {
 	);
 };
 
-export default OrdersContainer;
+export default OrdersScreen;

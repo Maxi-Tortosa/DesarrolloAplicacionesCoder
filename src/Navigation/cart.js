@@ -1,4 +1,4 @@
-import { CartContainer } from '../Screens/index';
+import { CartScreen } from '../Screens/index';
 import { HeaderTitle } from '../Components';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -25,7 +25,7 @@ const CartNavigator = () => {
 						backgroundColor: theme.colors.primary,
 					},
 				})}
-				component={CartContainer}
+				component={CartScreen}
 			/>
 		</Stack.Navigator>
 	);

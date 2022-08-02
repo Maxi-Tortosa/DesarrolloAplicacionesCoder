@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 
-const CartContainer = ({ navigation }) => {
+const CartScreen = ({ navigation }) => {
 	const [confirm, setConfirm] = useState(false);
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.items);
@@ -109,4 +109,4 @@ const CartContainer = ({ navigation }) => {
 	);
 };
 
-export default CartContainer;
+export default CartScreen;

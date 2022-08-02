@@ -24,10 +24,14 @@ const AppNavigator = () => {
 	return (
 		<SafeAreaView style={{ flex: 1, margin: 0 }}>
 			<NavigationContainer>
-				{pending ? (
+				{logged ? (
+					pending ? (
+						<Loader color={theme.colors.primary} size={55} />
+					) : (
+						<TabNavigator />
+					)
+				) : pending ? (
 					<Loader color={theme.colors.primary} size={55} />
-				) : logged ? (
-					<TabNavigator />
 				) : (
 					<LoginNavigator />
 				)}

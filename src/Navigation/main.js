@@ -1,16 +1,12 @@
 import {
-	CartContainer,
-	HomeContainer,
-	LoginContainer,
+	HomeScreen,
 	ProductDetailScreen,
-	ProductsContainer,
+	ProductsScreen,
 } from '../Screens/index';
-import { HeaderTitle, StyledButton, StyledText } from '../Components/index';
 
+import { HeaderTitle } from '../Components/index';
 import React from 'react';
-import { View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { styles } from './styles';
 import theme from '../../Constants/theme';
 
 const Stack = createNativeStackNavigator();
@@ -20,18 +16,16 @@ const MainNavigator = () => {
 		<Stack.Navigator>
 			<Stack.Screen
 				name='Home'
-				component={HomeContainer}
+				component={HomeScreen}
 				options={{
 					headerShown: false,
 				}}
 			/>
 			<Stack.Screen
 				name='Products'
-				component={ProductsContainer}
+				component={ProductsScreen}
 				options={({ route }) => ({
-					headerTitle: (props) => (
-						<HeaderTitle>{route.params.name}</HeaderTitle>
-					),
+					headerTitle: () => <HeaderTitle>{route.params.name}</HeaderTitle>,
 					headerStyle: {
 						backgroundColor: theme.colors.primary,
 					},
@@ -41,7 +35,7 @@ const MainNavigator = () => {
 				name='ProductDetail'
 				component={ProductDetailScreen}
 				options={() => ({
-					headerTitle: (props) => <HeaderTitle>¡Hacé tu pedido!</HeaderTitle>,
+					headerTitle: () => <HeaderTitle>¡Hacé tu pedido!</HeaderTitle>,
 					headerStyle: {
 						backgroundColor: theme.colors.primary,
 					},

@@ -11,7 +11,7 @@ import {
 	RegisterModal,
 	StyledButton,
 	StyledText,
-} from './../../Components/index';
+} from '../../Components/index';
 import React, { useReducer, useState } from 'react';
 import {
 	formReducer,
@@ -21,11 +21,11 @@ import {
 	onInputChange,
 } from '../../Utils/form';
 
-import { signin } from './../../Store/Actions/login.actions';
+import { signin } from '../../Store/Actions/login.actions';
 import { styles } from './styles';
 import { useDispatch } from 'react-redux';
 
-const LoginContainer = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
 	const [isRegister, setIsRegister] = useState(false);
 	const [formState, dispatchFormState] = useReducer(formReducer, initialState);
 	const dispatch = useDispatch();
@@ -115,4 +115,4 @@ const LoginContainer = ({ navigation }) => {
 	);
 };
 
-export default LoginContainer;
+export default LoginScreen;

@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 
-const ProductsContainer = ({ navigation }) => {
+const ProductsScreen = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const filterProducts = useSelector(
 		(state) => state.products.filteredProducts
@@ -48,4 +48,4 @@ const ProductsContainer = ({ navigation }) => {
 	);
 };
 
-export default ProductsContainer;
+export default ProductsScreen;
