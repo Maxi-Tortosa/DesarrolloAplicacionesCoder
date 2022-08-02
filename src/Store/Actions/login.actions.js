@@ -14,6 +14,7 @@ import {
 	signOut,
 } from 'firebase/auth';
 
+import { Alert } from 'react-native';
 import { loginTypes } from '../Types/login.types';
 
 const { SIGN_UP, SIGN_IN, SIGN_OUT, GET_CURRENTUSER } = loginTypes;
@@ -75,6 +76,32 @@ export const signin = (email, password) => {
 			})
 			.catch((error) => {
 				console.log(error.message);
+
+				if (error.message === 'Firebase: Error (auth/invalid-email).') {
+					Alert.alert(
+						'Email incorrecto',
+						'Ingrese su email con el siguiente formato: example@example.com',
+						[
+							{
+								text: 'Ok',
+							},
+						]
+					);
+				}
+				if (error.message === 'Firebase: Error (auth/wrong-password).') {
+					Alert.alert('Contraseña incorrecta', 'Ingresá los datos nuevamente', [
+						{
+							text: 'Ok',
+						},
+					]);
+				}
+				if (error.message === 'Firebase: Error (auth/user-not-found).') {
+					Alert.alert('Usuario inexistente', 'Ingresá los datos nuevamente', [
+						{
+							text: 'Ok',
+						},
+					]);
+				}
 			});
 	};
 };

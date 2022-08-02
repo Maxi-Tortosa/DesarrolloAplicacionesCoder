@@ -1,6 +1,6 @@
 import * as ImagePicker from 'expo-image-picker';
 
-import { Alert, Image, TouchableWithoutFeedback, View } from 'react-native';
+import { Image, TouchableWithoutFeedback, View } from 'react-native';
 
 import IonicIcons from '@expo/vector-icons/Ionicons';
 import React from 'react';
@@ -14,6 +14,7 @@ const Profile = ({ onImage, user }) => {
 
 	const verifyPermissions = async () => {
 		const { status } = await ImagePicker.requestCameraPermissionsAsync();
+
 		if (status !== 'granted') {
 			Alert.alert(
 				'Permisos insuficientes',

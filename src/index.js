@@ -1,4 +1,5 @@
 import AppNavigator from './Navigation/index';
+import { LogBox } from 'react-native';
 import { Provider } from 'react-redux/';
 import React from 'react';
 import { init } from './db';

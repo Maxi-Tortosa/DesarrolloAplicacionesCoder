@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-
 import { ActivityIndicator } from 'react-native';
+import React from 'react';
 import Root from './src/index';
 import theme from './Constants/theme';
 import { useFonts } from 'expo-font';
