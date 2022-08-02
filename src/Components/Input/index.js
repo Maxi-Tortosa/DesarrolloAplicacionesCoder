@@ -9,6 +9,7 @@ const Input = ({
 	editable,
 	children,
 	value,
+	defaultValue,
 	onChangeText,
 	onFocus,
 	onBlur,
@@ -20,17 +21,19 @@ const Input = ({
 	error,
 	touched,
 	style,
+	labelStyle,
 	...props
 }) => {
 	return (
 		<View style={styles.container}>
-			<Label {...props}>
+			<Label {...props} style={labelStyle}>
 				<TextInput
 					{...props}
 					placeholder={placeholder}
 					style={{ ...styles.textInput, ...style }}
 					placeholderTextColor={placeholderTextColor}
 					value={value}
+					defaultValue={defaultValue}
 					onFocus={onFocus}
 					onBlur={onBlur}
 					onChangeText={onChangeText}

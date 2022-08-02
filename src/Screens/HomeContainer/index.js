@@ -1,4 +1,9 @@
-import { CategoryCard, Header, StyledText } from '../../Components/index';
+import {
+	CategoryCard,
+	Header,
+	Loader,
+	StyledText,
+} from '../../Components/index';
 import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {
@@ -9,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getProducts } from './../../Store/Actions/products.actions';
 import { styles } from './styles';
+import theme from '../../../Constants/theme';
 
 const HomeContainer = ({ navigation }) => {
 	const dispatch = useDispatch();
@@ -40,6 +46,13 @@ const HomeContainer = ({ navigation }) => {
 				data={categories}
 				renderItem={renderItem}
 				keyExtractor={(item) => item.id}
+				ListEmptyComponent={() => (
+					<Loader
+						style={{ paddingTop: 150 }}
+						color={theme.colors.primary}
+						size={55}
+					/>
+				)}
 			/>
 		</View>
 	);

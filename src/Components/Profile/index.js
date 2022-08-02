@@ -48,7 +48,6 @@ const Profile = ({ onImage, user }) => {
 		}
 	};
 
-	console.log(noPictureText);
 	return (
 		<>
 			{user && (
@@ -71,7 +70,7 @@ const Profile = ({ onImage, user }) => {
 						</View>
 					</TouchableWithoutFeedback>
 					<View style={styles.information}>
-						<StyledText style={styles.userMail} font='inter'>
+						<StyledText style={styles.userMail} font='interBold'>
 							{mail}
 						</StyledText>
 					</View>

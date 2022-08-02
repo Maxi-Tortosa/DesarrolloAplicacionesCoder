@@ -1,29 +1,34 @@
-import { Text, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React from 'react';
+import StyledText from '../StyledText';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 
-const formatDate = (time) => {
-	const date = new Date(time);
-	return date.toLocaleDateString();
-};
-
 const OrderItem = ({ item, onDelete }) => {
+	const formatDate = (time) => {
+		const date = new Date(time);
+		return date.toLocaleDateString();
+	};
+
+	const handleDelete = () => {
+		onDelete(item.id);
+	};
 	return (
 		<View style={styles.container}>
-			<View style={styles.headerContainer}>
-				<Text style={styles.header}>{formatDate(item.date)}</Text>
+			<View style={styles.details}>
+				<StyledText style={styles.date} font='inter' lines={1} ellipsis='tail'>
+					{formatDate(item.date)}
+				</StyledText>
+
+				<StyledText font='interBold' style={styles.detailPrice}>
+					Total: ${item.total}
+				</StyledText>
 			</View>
-			<View style={styles.containerDetail}>
-				<View style={styles.detail}>
-					<Text style={styles.detailTotal}>Total: ${item.total}</Text>
-				</View>
-				<TouchableOpacity onPress={() => onDelete(item.id)}>
-					<Ionicons name='trash' size={20} color={theme.colors.primary} />
-				</TouchableOpacity>
-			</View>
+			<TouchableOpacity onPress={handleDelete}>
+				<Ionicons name='trash' size={20} color={theme.colors.primary} />
+			</TouchableOpacity>
 		</View>
 	);
 };

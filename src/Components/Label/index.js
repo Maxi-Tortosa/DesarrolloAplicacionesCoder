@@ -11,7 +11,7 @@ const Label = ({ children, style, label, subLabel, subLabelStyle }) => {
 			</StyledText>
 			{children}
 			{subLabel && (
-				<StyledText style={[styles.subLabel, subLabelStyle]}>
+				<StyledText style={{ ...styles.subLabel, ...subLabelStyle }}>
 					{subLabel}
 				</StyledText>
 			)}

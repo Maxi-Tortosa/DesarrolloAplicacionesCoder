@@ -1,14 +1,23 @@
+import { Dimensions } from 'react-native';
 import { StyleSheet } from 'react-native';
 import theme from '../../../Constants/theme';
 import { useTheme } from '@react-navigation/native';
 
+const { width, height } = Dimensions.get('window');
 export const styles = StyleSheet.create({
-	container: { display: 'flex', flexDirection: 'row', marginHorizontal: 15 },
+	container: {
+		flex: 0.45,
+		display: 'flex',
+		flexDirection: 'column',
+		marginHorizontal: theme.margin.o + 5,
+		marginTop: theme.margin.o + 5,
+		alignItems: 'center',
+	},
 	preview: {
-		width: 100,
-		height: 100,
+		width: 120,
+		height: 120,
 		backgroundColor: theme.colors.primary,
-		borderRadius: 100,
+		borderRadius: 120,
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
@@ -16,19 +25,22 @@ export const styles = StyleSheet.create({
 	},
 	icon: {
 		alignSelf: 'flex-end',
-		padding: 5,
-		backgroundColor: theme.colors.white,
+		padding: theme.padding.o - 5,
+		backgroundColor: theme.colors.lightGrey,
 		borderRadius: 25,
 		position: 'absolute',
-		top: 65,
+		top: 80,
 	},
-	picture: { width: 100, height: 100, borderRadius: 100 },
+	picture: { width: 120, height: 120, borderRadius: 120 },
 	information: {
 		flex: 1,
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	userName: { fontSize: 25, marginBottom: 10 },
-	userMail: { fontSize: 12 },
+
+	userMail: {
+		fontSize: theme.fontSize.titleM,
+		marginVertical: theme.margin.o + 5,
+	},
 });

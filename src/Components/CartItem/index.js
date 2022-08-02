@@ -3,7 +3,6 @@ import { TouchableOpacity, View } from 'react-native';
 import IonicIcons from '@expo/vector-icons/Ionicons';
 import React from 'react';
 import StyledText from '../StyledText/index';
-import { getProducts } from '../../Store/Actions/cart.actions';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 import { useDispatch } from 'react-redux';
@@ -15,7 +14,6 @@ const CartItem = ({ item, onDelete }) => {
 
 	const handlerPress = (id) => {
 		onDelete(id);
-		dispatch(getProducts());
 	};
 
 	return (
