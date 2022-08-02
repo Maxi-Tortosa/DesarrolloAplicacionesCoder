@@ -1,11 +1,12 @@
 import {
 	CartItem,
+	ConfirmModal,
 	Loader,
 	StyledButton,
 	StyledText,
 } from '../../Components/index';
 import { FlatList, TouchableOpacity, View } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	confirmCart,
 	getProducts,
@@ -17,6 +18,7 @@ import { styles } from './styles';
 import theme from '../../../Constants/theme';
 
 const CartContainer = ({ navigation }) => {
+	const [confirm, setConfirm] = useState(false);
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.items);
 	const total = useSelector((state) => state.cart.total);
@@ -40,6 +42,9 @@ const CartContainer = ({ navigation }) => {
 
 	const handlePress = () => {
 		navigation.navigate('Home');
+	};
+	const handleModal = () => {
+		setConfirm(!confirm);
 	};
 
 	return (
@@ -78,9 +83,7 @@ const CartContainer = ({ navigation }) => {
 			</View>
 			{cart.length > 0 && (
 				<View style={styles.footer}>
-					<TouchableOpacity
-						style={styles.buttonConfirm}
-						onPress={() => onHandlerConfirmCart()}>
+					<TouchableOpacity style={styles.buttonConfirm} onPress={handleModal}>
 						<StyledText font='inter' style={styles.buttonText}>
 							Confirmar
 						</StyledText>
@@ -94,6 +97,13 @@ const CartContainer = ({ navigation }) => {
 						</View>
 					</TouchableOpacity>
 				</View>
+			)}
+			{confirm && (
+				<ConfirmModal
+					confirm={confirm}
+					handleModal={handleModal}
+					handleConfirm={onHandlerConfirmCart}
+				/>
 			)}
 		</View>
 	);

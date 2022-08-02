@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import colors from 'webpack-dev-server/lib/utils/colors';
 import theme from '../../../Constants/theme';
 
 export const styles = StyleSheet.create({

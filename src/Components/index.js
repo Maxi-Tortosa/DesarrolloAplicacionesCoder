@@ -12,3 +12,4 @@ export { default as RegisterModal } from './RegisterModal/index';
 export { default as Profile } from './Profile/index';
 export { default as Loader } from './Loader/index';
 export { default as HeaderTitle } from './HeaderTitle/index';
+export { default as ConfirmModal } from './ConfirmModal/index';

@@ -48,6 +48,13 @@ const OrdersContainer = ({ navigation }) => {
 						data={orders}
 						renderItem={renderItem}
 						keyExtractor={(item) => item.id}
+						ListEmptyComponent={() => (
+							<Loader
+								style={{ paddingTop: 180 }}
+								color={theme.colors.primary}
+								size={55}
+							/>
+						)}
 					/>
 				)}
 			</View>
