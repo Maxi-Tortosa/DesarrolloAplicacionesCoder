@@ -46,10 +46,10 @@ export const validateInput = (name, value) => {
 		case 'email':
 			if (value.trim() === '') {
 				hasError = true;
-				error = 'Email is required';
+				error = 'El email es requerido';
 			} else if (!formatEmail.test(value)) {
 				hasError = true;
-				error = 'Email is invalid';
+				error = 'El email es inválido';
 			} else {
 				hasError = false;
 				error = '';
@@ -58,10 +58,10 @@ export const validateInput = (name, value) => {
 		case 'password':
 			if (value.trim() === '') {
 				hasError = true;
-				error = 'Password is required';
+				error = 'El Password es requerido';
 			} else if (value.length < minPasswordLength) {
 				hasError = true;
-				error = `Password must be at least ${minPasswordLength} characters`;
+				error = `El Password debe contener al menos ${minPasswordLength} caracteres`;
 			} else {
 				hasError = false;
 				error = '';
