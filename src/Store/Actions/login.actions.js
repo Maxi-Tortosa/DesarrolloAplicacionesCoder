@@ -60,6 +60,41 @@ export const signup = (email, password) => {
 			})
 			.catch((error) => {
 				console.log(error.message);
+
+				if (error.message === 'Firebase: Error (auth/invalid-email).') {
+					Alert.alert(
+						'Email incorrecto',
+						'Ingrese su email con el siguiente formato: example@example.com',
+						[
+							{
+								text: 'Ok',
+							},
+						]
+					);
+				}
+
+				if (error.message === 'Firebase: Error (auth/internal-error).') {
+					Alert.alert(
+						'Contraseña incorrecta',
+						'La contraseña debe tener, al menos, 6 caracteres',
+						[
+							{
+								text: 'Ok',
+							},
+						]
+					);
+				}
+				if (error.message === 'Firebase: (auth/email-already-in-use).') {
+					Alert.alert(
+						'El usuario ya existe',
+						'Ingrese un correo electrónico diferente',
+						[
+							{
+								text: 'Ok',
+							},
+						]
+					);
+				}
 			});
 	};
 };
@@ -75,8 +110,6 @@ export const signin = (email, password) => {
 				});
 			})
 			.catch((error) => {
-				console.log(error.message);
-
 				if (error.message === 'Firebase: Error (auth/invalid-email).') {
 					Alert.alert(
 						'Email incorrecto',
