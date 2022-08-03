@@ -6,8 +6,8 @@ export const UPDATED_FORM = 'UPDATED_FORM';
 export const CLEAN_FORM = 'CLEAN_FORM';
 
 export const initialState = {
-	email: { value: '', touched: false, hasError: true, error: '' },
-	password: { value: '', touched: false, hasError: true, error: '' },
+	email: { value: '', touched: false, hasError: false, error: '' },
+	password: { value: '', touched: false, hasError: false, error: '' },
 	isFormValid: false,
 };
 
@@ -31,8 +31,8 @@ export const formReducer = (state, action) => {
 		case CLEAN_FORM:
 			return {
 				...state,
-				email: { value: '', touched: false, hasError: true, error: '' },
-				password: { value: '', touched: false, hasError: true, error: '' },
+				email: { value: '', touched: false, hasError: false, error: '' },
+				password: { value: '', touched: false, hasError: false, error: '' },
 			};
 		default:
 			return state;
@@ -42,6 +42,7 @@ export const formReducer = (state, action) => {
 export const validateInput = (name, value) => {
 	let hasError = false;
 	let error = '';
+
 	switch (name) {
 		case 'email':
 			if (value.trim() === '') {

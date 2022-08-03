@@ -60,10 +60,9 @@ export const signup = (email, password) => {
 			})
 			.catch((error) => {
 				console.log(error.message);
-
 				if (error.message === 'Firebase: Error (auth/invalid-email).') {
 					Alert.alert(
-						'Email incorrecto',
+						'El campo Email está vacío',
 						'Ingrese su email con el siguiente formato: example@example.com',
 						[
 							{
@@ -73,17 +72,6 @@ export const signup = (email, password) => {
 					);
 				}
 
-				if (error.message === 'Firebase: Error (auth/internal-error).') {
-					Alert.alert(
-						'Contraseña incorrecta',
-						'La contraseña debe tener, al menos, 6 caracteres',
-						[
-							{
-								text: 'Ok',
-							},
-						]
-					);
-				}
 				if (error.message === 'Firebase: (auth/email-already-in-use).') {
 					Alert.alert(
 						'El usuario ya existe',
@@ -94,6 +82,24 @@ export const signup = (email, password) => {
 							},
 						]
 					);
+				}
+				if (error.message === 'Firebase: Error (auth/internal-error).') {
+					Alert.alert(
+						'El campo Password está vacío',
+						'Ingresá los datos nuevamente',
+						[
+							{
+								text: 'Ok',
+							},
+						]
+					);
+				}
+				if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+					Alert.alert('El usuario ya existe', 'Ingresá un usuario diferente', [
+						{
+							text: 'Ok',
+						},
+					]);
 				}
 			});
 	};
@@ -110,9 +116,11 @@ export const signin = (email, password) => {
 				});
 			})
 			.catch((error) => {
+				console.log(error.message);
 				if (error.message === 'Firebase: Error (auth/invalid-email).') {
+					console.log(email);
 					Alert.alert(
-						'Email incorrecto',
+						'El campo Email está vacío',
 						'Ingrese su email con el siguiente formato: example@example.com',
 						[
 							{
@@ -129,11 +137,22 @@ export const signin = (email, password) => {
 					]);
 				}
 				if (error.message === 'Firebase: Error (auth/user-not-found).') {
-					Alert.alert('Usuario inexistente', 'Ingresá los datos nuevamente', [
+					Alert.alert('Usuario inexistente', 'Revisá el email ingresado', [
 						{
 							text: 'Ok',
 						},
 					]);
+				}
+				if (error.message === 'Firebase: Error (auth/internal-error).') {
+					Alert.alert(
+						'El campo Password está vacío',
+						'Ingresá los datos nuevamente',
+						[
+							{
+								text: 'Ok',
+							},
+						]
+					);
 				}
 			});
 	};

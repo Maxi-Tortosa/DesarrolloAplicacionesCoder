@@ -73,6 +73,11 @@ const RegisterModal = ({
 						label='Registrá tu password'
 					/>
 					<StyledButton
+						disabled={
+							!formState.email.hasError & !formState.password.hasError
+								? false
+								: true
+						}
 						style={styles.submitButton}
 						text='Registrarse'
 						backgroundColor={theme.colors.primary}

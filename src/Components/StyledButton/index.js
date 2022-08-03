@@ -13,12 +13,14 @@ const StyledButton = ({
 	onPressEvent = null,
 	prop,
 	font = 'inter',
+	disabled = false,
 }) => {
 	const handleOnPress = (e) =>
 		onPressEvent ? onPressEvent(e, text, prop) : null;
 
 	return (
 		<TouchableOpacity
+			disabled={disabled}
 			style={{
 				...styles.button,
 				...style,

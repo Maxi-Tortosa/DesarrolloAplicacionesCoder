@@ -91,6 +91,11 @@ const LoginScreen = ({ navigation }) => {
 						style={styles.buttonIngresar}
 						text='Ingresar'
 						onPressEvent={onHandlerLogin}
+						disabled={
+							!formState.email.hasError & !formState.password.hasError
+								? false
+								: true
+						}
 					/>
 					<StyledText style={styles.questionText} font='interBold'>
 						¿No tenés cuenta?
