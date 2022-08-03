@@ -1,4 +1,5 @@
 import {
+	Alert,
 	Keyboard,
 	Modal,
 	Pressable,
@@ -22,11 +23,29 @@ const RegisterModal = ({
 	isRegister,
 	onPressEvent,
 }) => {
-	const { email, password } = formState;
+	const { email, password, firstName } = formState;
 	const dispatch = useDispatch();
 
-	const handleLogin = () => {
-		dispatch(signup(formState.email.value, formState.password.value));
+	const handleSignUp = () => {
+		if (formState.firstName.value.length < 6) {
+			Alert.alert(
+				'El campo Nombre está vacío o es incorrecto',
+				'Ingresá un nombre con al menos 6 caracteres.',
+				[
+					{
+						text: 'Ok',
+					},
+				]
+			);
+		} else {
+			dispatch(
+				signup(
+					formState.email.value,
+					formState.password.value,
+					formState.firstName.value
+				)
+			);
+		}
 	};
 
 	return (
@@ -72,9 +91,24 @@ const RegisterModal = ({
 						touched={formState.password.touched}
 						label='Registrá tu password'
 					/>
+					<Input
+						style={styles.input}
+						placeholder='example'
+						autoCapitalize='none'
+						autoCorrect={false}
+						onChangeText={(text) => handleChange(text, 'firstName')}
+						onEndEditing={(e) => onBlur(e.nativeEvent.text, 'firstName')}
+						value={formState.firstName.value}
+						hasError={firstName.hasError}
+						error={firstName.error}
+						touched={formState.firstName.touched}
+						label='Registrá tu nombre'
+					/>
 					<StyledButton
 						disabled={
-							!formState.email.hasError & !formState.password.hasError
+							!formState.email.hasError &
+							!formState.password.hasError &
+							!formState.firstName.hasError
 								? false
 								: true
 						}
@@ -82,7 +116,7 @@ const RegisterModal = ({
 						text='Registrarse'
 						backgroundColor={theme.colors.primary}
 						fontColor='black'
-						onPressEvent={handleLogin}
+						onPressEvent={handleSignUp}
 					/>
 				</View>
 			</TouchableWithoutFeedback>

@@ -39,7 +39,7 @@ export const signout = () => {
 		});
 	};
 };
-export const signup = (email, password) => {
+export const signup = (email, password, firstName) => {
 	return async (dispatch) => {
 		const ref = collection(db, 'Users');
 
@@ -54,6 +54,7 @@ export const signup = (email, password) => {
 				addDoc(ref, {
 					email,
 					password,
+					firstName,
 					uid: userCredential.user.uid,
 					profilePicture: null,
 				});

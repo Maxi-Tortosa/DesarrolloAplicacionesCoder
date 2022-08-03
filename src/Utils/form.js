@@ -8,6 +8,7 @@ export const CLEAN_FORM = 'CLEAN_FORM';
 export const initialState = {
 	email: { value: '', touched: false, hasError: false, error: '' },
 	password: { value: '', touched: false, hasError: false, error: '' },
+	firstName: { value: '', touched: false, hasError: false, error: '' },
 	isFormValid: false,
 };
 
@@ -32,6 +33,7 @@ export const formReducer = (state, action) => {
 			return {
 				...state,
 				email: { value: '', touched: false, hasError: false, error: '' },
+				password: { value: '', touched: false, hasError: false, error: '' },
 				password: { value: '', touched: false, hasError: false, error: '' },
 			};
 		default:
@@ -63,6 +65,19 @@ export const validateInput = (name, value) => {
 			} else if (value.length < minPasswordLength) {
 				hasError = true;
 				error = `El Password debe contener al menos ${minPasswordLength} caracteres`;
+			} else {
+				hasError = false;
+				error = '';
+			}
+			break;
+
+		case 'firstName':
+			if (value.trim() === '') {
+				hasError = true;
+				error = 'El Nombre es requerido';
+			} else if (value.length < minPasswordLength) {
+				hasError = true;
+				error = `El Nombre debe contener al menos ${minPasswordLength} caracteres`;
 			} else {
 				hasError = false;
 				error = '';
