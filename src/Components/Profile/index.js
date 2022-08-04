@@ -74,6 +74,9 @@ const Profile = ({ onImage, user }) => {
 						<StyledText style={styles.userMail} font='interBold'>
 							{mail}
 						</StyledText>
+						<StyledText style={styles.userMail} font='interBold'>
+							{user.firstName}
+						</StyledText>
 					</View>
 				</View>
 			)}

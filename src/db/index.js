@@ -17,6 +17,21 @@ export const init = () => {
 	return promise;
 };
 
+export const deleteTable = () => {
+	const promise = new Promise((resolve, reject) => {
+		db.transaction((tx) => {
+			tx.executeSql(
+				'DELETE FROM cart',
+				[],
+				() => resolve(),
+				(_, err) => reject(err)
+			);
+		});
+	});
+
+	return promise;
+};
+
 export const updateProduct = (quantity, code) => {
 	const promise = new Promise((resolve, reject) => {
 		db.transaction((tx) => {
