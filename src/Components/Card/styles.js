@@ -1,15 +1,16 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
 import theme from '../../../Constants/theme';
+import { useIsPortrait } from './../../Utils/hooks';
 
 const { width, height } = Dimensions.get('window');
-
+const isPortrait = useIsPortrait();
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		width: width * 0.4,
 		margin: 20,
-		height: height * 0.35,
+		height: isPortrait ? height * 0.35 : height * 0.55,
 	},
 	containerTouchable: {
 		flex: 1,

@@ -1,21 +1,22 @@
 import { Dimensions } from 'react-native';
 import { StyleSheet } from 'react-native';
 import theme from '../../../Constants/theme';
-import { useTheme } from '@react-navigation/native';
+import { useIsPortrait } from '../../Utils/hooks';
 
-const { width, height } = Dimensions.get('window');
+const isPortrait = useIsPortrait();
 export const styles = StyleSheet.create({
 	container: {
-		flex: 0.45,
+		flex: isPortrait ? 0.45 : 1,
 		display: 'flex',
 		flexDirection: 'column',
 		marginHorizontal: theme.margin.o + 5,
-		marginTop: theme.margin.o + 5,
+		paddingTop: isPortrait ? theme.padding.th : theme.padding.t,
 		alignItems: 'center',
 	},
 	preview: {
 		width: 120,
 		height: 120,
+
 		backgroundColor: theme.colors.primary,
 		borderRadius: 120,
 		display: 'flex',

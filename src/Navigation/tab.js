@@ -5,16 +5,19 @@ import ProfileNavigator from './profile';
 import React from 'react';
 import StyledText from './../Components/StyledText/index';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { styles } from './styles';
 import theme from '../../Constants/theme';
+import { useIsPortrait } from '../Utils/hooks';
 
 const BottomTabs = createBottomTabNavigator();
-
+const isPortrait = useIsPortrait();
 const TabNavigator = () => {
 	return (
 		<BottomTabs.Navigator
 			initialRouteName='HomeScreen'
 			screenOptions={{
 				headerShown: false,
+				tabBarLabelPosition: !isPortrait && 'below-icon',
 			}}>
 			<BottomTabs.Screen
 				name='HomeScreen'

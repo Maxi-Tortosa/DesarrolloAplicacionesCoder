@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../Store/Actions/products.actions';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
+import { useIsPortrait } from './../../Utils/hooks';
 
 const HomeScreen = ({ navigation }) => {
 	const dispatch = useDispatch();

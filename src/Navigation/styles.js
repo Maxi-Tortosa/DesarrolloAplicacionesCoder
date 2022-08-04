@@ -6,4 +6,5 @@ const { width, height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
 	cartHeader: { marginLeft: theme.margin.t },
+	tabBarLabel: { width: 150, height: 150 },
 });

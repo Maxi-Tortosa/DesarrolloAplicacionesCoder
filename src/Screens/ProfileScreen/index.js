@@ -4,6 +4,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import { setProfilePicture, signout } from '../../Store/Actions/login.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { ScrollView } from 'react-native';
 import { View } from 'react-native';
 import { db } from '../../Firebase';
 import { styles } from './styles';
@@ -45,11 +46,11 @@ const ProfileScreen = ({ navigation }) => {
 			{!user ? (
 				<Loader color={theme.colors.primary} size={55} />
 			) : (
-				<View style={styles.container}>
+				<ScrollView style={styles.container}>
 					<Profile onImage={onHandlePictureChange} user={user} />
 					<StyledButton
 						onPressEvent={handleNavigate}
-						style={{ marginTop: theme.margin.th }}
+						style={styles.ordersButton}
 						backgroundColor={theme.colors.primary}
 						fontSize={theme.fontSize.titleS}
 						font='interBold'
@@ -63,7 +64,7 @@ const ProfileScreen = ({ navigation }) => {
 						font='interBold'
 						onPressEvent={handleSignOut}
 					/>
-				</View>
+				</ScrollView>
 			)}
 		</>
 	);
