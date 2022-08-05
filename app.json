@@ -1,7 +1,8 @@
 {
 	"expo": {
 		"name": "proyectoFinalTortosa",
-		"slug": "proyectoFinalTortosa",
+		"slug": "lumaveggieapp",
+		"owner": "mtortosa",
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/luma.png",
