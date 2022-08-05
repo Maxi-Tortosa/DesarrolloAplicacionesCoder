@@ -5,15 +5,18 @@ import { orderTypes } from '../Types/order.types';
 
 const { GET_ORDERS, DELETE_ORDER } = orderTypes;
 
-export const getOrders = () => {
+export const getOrders = (userId) => {
 	return async (dispatch) => {
 		onSnapshot(
 			collection(db, 'Pedidos'),
-			(snapshot) =>
+			(snapshot) => {
 				dispatch({
 					type: GET_ORDERS,
-					payload: snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
-				}),
+					payload: snapshot.docs
+						.map((doc) => ({ ...doc.data(), id: doc.id }))
+						.filter((item) => item.userId === userId),
+				});
+			},
 			(error) => console.log(error)
 		);
 	};

@@ -10,6 +10,7 @@ import theme from '../../../Constants/theme';
 const OrdersScreen = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const orders = useSelector((state) => state.order.items);
+	const userId = useSelector((state) => state.login.uid);
 
 	const handlePress = () => {
 		navigation.navigate('Home');
@@ -23,7 +24,7 @@ const OrdersScreen = ({ navigation }) => {
 	);
 
 	useEffect(() => {
-		dispatch(getOrders());
+		dispatch(getOrders(userId));
 	}, []);
 
 	return (

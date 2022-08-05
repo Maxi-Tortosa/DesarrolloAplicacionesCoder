@@ -60,7 +60,6 @@ export const signup = (email, password, firstName) => {
 				});
 			})
 			.catch((error) => {
-				console.log(error.message);
 				if (error.message === 'Firebase: Error (auth/invalid-email).') {
 					Alert.alert(
 						'El campo Email está vacío',
@@ -117,9 +116,7 @@ export const signin = (email, password) => {
 				});
 			})
 			.catch((error) => {
-				console.log(error.message);
 				if (error.message === 'Firebase: Error (auth/invalid-email).') {
-					console.log(email);
 					Alert.alert(
 						'El campo Email está vacío',
 						'Ingrese su email con el siguiente formato: example@example.com',
@@ -173,7 +170,6 @@ export const setProfilePicture = (image, userId, docId) => {
 			const ref = doc(collection(db, 'Users'), docId);
 			updateDoc(ref, { profilePicture: Path });
 		} catch (error) {
-			console.log(error.message);
 			throw error;
 		}
 	};

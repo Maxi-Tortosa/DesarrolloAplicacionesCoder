@@ -39,7 +39,6 @@ export const updateProduct = (quantity, code) => {
 				'UPDATE cart SET quantity = ? WHERE code = ?',
 				[JSON.stringify(quantity), code],
 				(_, result) => {
-					console.log(result);
 					resolve(result);
 				},
 				(_, err) => {
@@ -60,7 +59,6 @@ export const deleteProduct = (code) => {
 				'DELETE FROM cart WHERE code = ? ',
 				[code],
 				(_, result) => {
-					console.log(result);
 					resolve(result);
 				},
 				(_, err) => {
@@ -99,7 +97,6 @@ export const insertProduct = (
 					variety,
 				],
 				(_, result) => {
-					console.log(result);
 					resolve(result);
 				},
 				(_, err) => {

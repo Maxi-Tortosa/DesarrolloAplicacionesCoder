@@ -22,19 +22,27 @@ const CartScreen = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.items);
 	const total = useSelector((state) => state.cart.total);
+	const userId = useSelector((state) => state.login.uid);
 
 	const onHandlerDelete = (id) => {
 		dispatch(removeItem(id));
 		dispatch(getProducts());
 	};
 	const onHandlerConfirmCart = () => {
-		dispatch(confirmCart(cart, total));
-		dispatch(getProducts());
+		const order = cart.map((item) => {
+			return {
+				id: item.code,
+				name: item.name,
+				price: item.price,
+				quantity: item.quantity,
+			};
+		});
+		dispatch(confirmCart(order, total, userId));
 	};
 
 	useEffect(() => {
 		dispatch(getProducts());
-	}, []);
+	}, [confirm]);
 
 	const renderItem = ({ item }) => (
 		<CartItem item={item} onDelete={onHandlerDelete} />
@@ -49,7 +57,6 @@ const CartScreen = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			{/* GENERAR MODAL PARA CONFIRMAR */}
 			<View style={styles.cartList}>
 				{cart.length < 1 ? (
 					<>

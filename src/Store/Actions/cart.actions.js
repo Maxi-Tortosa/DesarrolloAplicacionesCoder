@@ -19,7 +19,7 @@ export const getProducts = () => {
 
 			dispatch({ type: GET_ITEMS, items: result.rows._array });
 		} catch (error) {
-			console.log(error);
+			console.log(error.message);
 		}
 	};
 };
@@ -51,12 +51,19 @@ export const removeItem = (id) => {
 	};
 };
 
-export const confirmCart = (items, total) => {
+export const confirmCart = (items, total, userId) => {
 	return async (dispatch) => {
 		const ref = collection(db, 'Pedidos');
 
 		deleteTable();
 
-		addDoc(ref, { date: Date.now(), items: items, total: total });
+		addDoc(ref, {
+			userId: userId,
+			date: Date.now(),
+			items: items,
+			total: total,
+		});
+
+		dispatch({ type: CONFIRM_CART });
 	};
 };
