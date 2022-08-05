@@ -1,6 +1,10 @@
-import { StyleSheet } from 'react-native';
-import theme from '../../../Constants/theme';
+import { Dimensions, StyleSheet } from 'react-native';
 
+import theme from '../../../Constants/theme';
+import { useIsSmallDevice } from '../../Utils/hooks';
+
+const isSmallDevice = useIsSmallDevice();
+const { width, height } = Dimensions.get('window');
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -13,7 +17,7 @@ export const styles = StyleSheet.create({
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
-	modal: {},
+
 	closeButton: {
 		width: '100%',
 		display: 'flex',
@@ -21,33 +25,35 @@ export const styles = StyleSheet.create({
 	},
 	closeButtonText: {
 		alignSelf: 'flex-end',
-		fontSize: 16,
+		fontSize: theme.fontSize.titleS,
 		marginRight: 30,
 	},
 	titleText: {
-		fontSize: 14,
+		fontSize: theme.fontSize.titleS - 2,
 		width: '50%',
-		marginLeft: 32,
-		marginTop: 80,
+		marginLeft: width / 12,
+		marginTop: !isSmallDevice ? theme.margin.f * 2 : theme.margin.t,
 		color: theme.colors.primary,
 		alignSelf: 'flex-start',
 	},
 	titleText2: {
-		fontSize: 40,
-		width: '50%',
-		marginLeft: 32,
-		marginBottom: 40,
+		fontSize: !isSmallDevice
+			? theme.fontSize.titleXL + 14
+			: theme.fontSize.titleXL + 10,
+		width: width / 2,
+		marginLeft: width / 12,
+		marginBottom: theme.margin.f,
 		color: theme.colors.primary,
 		alignSelf: 'flex-start',
 	},
 	input: {
 		backgroundColor: theme.colors.primary,
-		marginTop: 10,
+		marginTop: theme.margin.o,
 	},
 	submitButton: {
 		backgroundColor: theme.colors.primary,
-		width: '30%',
+		width: !isSmallDevice ? 120 : 120,
 		alignSelf: 'center',
-		marginTop: 30,
+		marginTop: theme.margin.th,
 	},
 });

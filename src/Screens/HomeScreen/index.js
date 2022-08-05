@@ -39,14 +39,17 @@ const HomeScreen = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
 			<Header />
-			<StyledText font='interBold' style={styles.title}>
-				¡Bienvenidas/os a nuestra app de pedidos!
-			</StyledText>
+
 			<FlatList
 				style={styles.categoryList}
 				data={categories}
 				renderItem={renderItem}
 				keyExtractor={(item) => item.id}
+				ListHeaderComponent={() => (
+					<StyledText style={styles.listHeader} font='interBold'>
+						¡Elegí el producto y hace tu pedido!
+					</StyledText>
+				)}
 				ListEmptyComponent={() => (
 					<Loader
 						style={{ paddingTop: 150 }}

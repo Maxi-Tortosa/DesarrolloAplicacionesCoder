@@ -16,13 +16,17 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
+			"bundleIdentifier": "com.lumaVeggie.app",
 			"supportsTablet": true
 		},
 		"android": {
+			"package": "com.lumaVeggie.app",
+			"versionCode": 1,
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/burger.png",
 				"backgroundColor": "#F3D15F"
-			}
+			},
+			"permissions": ["CAMERA", "WRITE_EXTERNAL_STORAGE"]
 		},
 		"web": {
 			"favicon": "./assets/lumafav.png"

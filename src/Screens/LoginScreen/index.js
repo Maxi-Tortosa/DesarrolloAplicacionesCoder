@@ -97,6 +97,11 @@ const LoginScreen = ({ navigation }) => {
 							style={styles.buttonIngresar}
 							text='Ingresar'
 							onPressEvent={onHandlerLogin}
+							fontSize={
+								!isSmallDevice
+									? theme.fontSize.titleS
+									: theme.fontSize.titleS - 2
+							}
 							disabled={
 								!formState.email.hasError & !formState.password.hasError
 									? false
@@ -108,6 +113,11 @@ const LoginScreen = ({ navigation }) => {
 						</StyledText>
 						<StyledButton
 							style={styles.buttonRegister}
+							fontSize={
+								!isSmallDevice
+									? theme.fontSize.titleS
+									: theme.fontSize.titleS - 2
+							}
 							text='Registrate'
 							onPressEvent={handleModal}
 						/>

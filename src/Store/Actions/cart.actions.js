@@ -60,6 +60,7 @@ export const confirmCart = (items, total, userId) => {
 		addDoc(ref, {
 			userId: userId,
 			date: Date.now(),
+			estado: 'Recibido',
 			items: items,
 			total: total,
 		});
