@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
 	},
 
 	closeButton: {
+		marginTop: theme.margin.th,
 		width: '100%',
 		display: 'flex',
 		flexDirection: 'column',
@@ -26,7 +27,7 @@ export const styles = StyleSheet.create({
 	closeButtonText: {
 		alignSelf: 'flex-end',
 		fontSize: theme.fontSize.titleS,
-		marginRight: 30,
+		marginRight: theme.margin.th,
 	},
 	titleText: {
 		fontSize: theme.fontSize.titleS - 2,
@@ -42,7 +43,7 @@ export const styles = StyleSheet.create({
 			: theme.fontSize.titleXL + 10,
 		width: width / 2,
 		marginLeft: width / 12,
-		marginBottom: theme.margin.f,
+		marginBottom: theme.margin.t,
 		color: theme.colors.primary,
 		alignSelf: 'flex-start',
 	},
@@ -52,7 +53,7 @@ export const styles = StyleSheet.create({
 	},
 	submitButton: {
 		backgroundColor: theme.colors.primary,
-		width: !isSmallDevice ? 120 : 120,
+		width: 150,
 		alignSelf: 'center',
 		marginTop: theme.margin.th,
 	},
