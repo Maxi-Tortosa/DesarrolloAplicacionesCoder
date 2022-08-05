@@ -25,10 +25,13 @@ export const styles = StyleSheet.create({
 		fontSize: !isSmallDevice
 			? theme.fontSize.titleL + 14
 			: theme.fontSize.titleL + 2,
-		marginBottom: theme.margin.t,
+		marginBottom: !isSmallDevice ? theme.margin.t : theme.margin.o,
 		textAlign: 'center',
 	},
 	questionText: { marginTop: theme.margin.t - 5 },
 	buttonIngresar: { marginTop: theme.margin.t - 5 },
-	buttonRegister: { marginTop: theme.margin.t },
+	buttonRegister: {
+		marginTop: theme.margin.t,
+		marginBottom: isSmallDevice && theme.margin.th,
+	},
 });
