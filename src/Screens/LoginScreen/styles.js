@@ -1,8 +1,10 @@
 import { Dimensions } from 'react-native';
 import { StyleSheet } from 'react-native';
 import theme from '../../../Constants/theme';
+import { useIsSmallDevice } from '../../Utils/hooks';
 
 const { width, height } = Dimensions.get('window');
+const isSmallDevice = useIsSmallDevice();
 
 export const styles = StyleSheet.create({
 	scrollContainer: { flex: 1, backgroundColor: theme.colors.primary },
@@ -13,9 +15,16 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		buttonRegister: 'center',
 	},
-	burgerImage: { width: 200, height: 200, marginTop: theme.margin.t },
+	burgerImage: {
+		width: !isSmallDevice ? 200 : 140,
+		height: !isSmallDevice ? 200 : 140,
+		marginTop: !isSmallDevice ? theme.margin.t : theme.margin.o,
+	},
 	welcomeText: {
-		fontSize: theme.fontSize.titleL + 14,
+		width: !isSmallDevice ? null : width / 1.2,
+		fontSize: !isSmallDevice
+			? theme.fontSize.titleL + 14
+			: theme.fontSize.titleL + 2,
 		marginBottom: theme.margin.t,
 		textAlign: 'center',
 	},

@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { deleteOrder, getOrders } from '../../Store/Actions/order.action';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { Loader } from '../../Components/index';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 

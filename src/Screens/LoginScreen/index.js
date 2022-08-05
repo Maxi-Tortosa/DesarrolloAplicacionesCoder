@@ -1,4 +1,5 @@
 import {
+	Dimensions,
 	Image,
 	Keyboard,
 	KeyboardAvoidingView,
@@ -26,11 +27,13 @@ import { signin } from '../../Store/Actions/login.actions';
 import { styles } from './styles';
 import theme from '../../../Constants/theme';
 import { useDispatch } from 'react-redux';
+import { useIsSmallDevice } from '../../Utils/hooks';
 
 const LoginScreen = ({ navigation }) => {
 	const [isRegister, setIsRegister] = useState(false);
 	const [formState, dispatchFormState] = useReducer(formReducer, initialState);
 	const dispatch = useDispatch();
+	const isSmallDevice = useIsSmallDevice();
 
 	const onHandleChange = (text, type) => {
 		onInputChange(type, text, dispatchFormState, formState);

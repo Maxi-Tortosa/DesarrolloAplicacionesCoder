@@ -40,7 +40,7 @@ const HomeScreen = ({ navigation }) => {
 		<View style={styles.container}>
 			<Header />
 			<StyledText font='interBold' style={styles.title}>
-				¡Bienvenidas/os a nuestra tienda!
+				¡Bienvenidas/os a nuestra app de pedidos!
 			</StyledText>
 			<FlatList
 				style={styles.categoryList}
