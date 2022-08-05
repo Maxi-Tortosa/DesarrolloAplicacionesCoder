@@ -4,12 +4,12 @@
 		"slug": "proyectoFinalTortosa",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/icon.png",
+		"icon": "./assets/luma.png",
 		"userInterfaceStyle": "light",
 		"splash": {
-			"image": "./assets/splash.png",
+			"image": "./assets/burger.png",
 			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
+			"backgroundColor": "#F3D15F"
 		},
 		"updates": {
 			"fallbackToCacheTimeout": 0
@@ -20,8 +20,8 @@
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
-				"backgroundColor": "#FFFFFF"
+				"foregroundImage": "./assets/burger.png",
+				"backgroundColor": "#F3D15F"
 			}
 		},
 		"web": {
