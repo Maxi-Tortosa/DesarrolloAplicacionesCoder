@@ -56,63 +56,63 @@ const CartScreen = ({ navigation }) => {
 	};
 
 	return (
-		<View style={styles.container}>
-			<View style={styles.cartList}>
-				{cart.length < 1 ? (
-					<>
-						<StyledText font='inter' style={styles.noProductsText}>
-							No existen artículos en tu carrito, animate y probá nuestros
-							productos
-						</StyledText>
-						<StyledButton
-							onPressEvent={handlePress}
-							style={{ marginTop: theme.margin.th }}
-							text='Hacé tu pedido ahora'
-							backgroundColor={theme.colors.lightGrey}
-							fontSize={theme.fontSize.titleS}
-							font='interBold'
+		<>
+			{cart ? (
+				<View style={styles.container}>
+					<View style={styles.cartList}>
+						<FlatList
+							data={cart}
+							renderItem={renderItem}
+							keyExtractor={(item) => item.id}
+							ListEmptyComponent={() => (
+								<>
+									<StyledText font='inter' style={styles.noProductsText}>
+										No existen artículos en tu carrito, animate y probá nuestros
+										productos
+									</StyledText>
+									<StyledButton
+										onPressEvent={handlePress}
+										style={{ marginTop: theme.margin.th }}
+										text='Hacé tu pedido ahora'
+										backgroundColor={theme.colors.lightGrey}
+										fontSize={theme.fontSize.titleS}
+										font='interBold'
+									/>
+								</>
+							)}
 						/>
-					</>
-				) : (
-					<FlatList
-						data={cart}
-						renderItem={renderItem}
-						keyExtractor={(item) => item.id}
-						ListEmptyComponent={() => (
-							<Loader
-								style={{ paddingTop: 180 }}
-								color={theme.colors.primary}
-								size={55}
-							/>
-						)}
-					/>
-				)}
-			</View>
-			{cart.length > 0 && (
-				<View style={styles.footer}>
-					<TouchableOpacity style={styles.buttonConfirm} onPress={handleModal}>
-						<StyledText font='inter' style={styles.buttonText}>
-							Confirmar
-						</StyledText>
-						<View style={styles.totalContainer}>
-							<StyledText font='interBold' style={styles.totalTitle}>
-								Total
-							</StyledText>
-							<StyledText font='interBold' style={styles.total}>
-								${total.toFixed(2)}
-							</StyledText>
+					</View>
+					{cart.length > 0 && (
+						<View style={styles.footer}>
+							<TouchableOpacity
+								style={styles.buttonConfirm}
+								onPress={handleModal}>
+								<StyledText font='inter' style={styles.buttonText}>
+									Confirmar
+								</StyledText>
+								<View style={styles.totalContainer}>
+									<StyledText font='interBold' style={styles.totalTitle}>
+										Total
+									</StyledText>
+									<StyledText font='interBold' style={styles.total}>
+										${total.toFixed(2)}
+									</StyledText>
+								</View>
+							</TouchableOpacity>
 						</View>
-					</TouchableOpacity>
+					)}
+					{confirm && (
+						<ConfirmModal
+							confirm={confirm}
+							handleModal={handleModal}
+							handleConfirm={onHandlerConfirmCart}
+						/>
+					)}
 				</View>
+			) : (
+				<Loader color={theme.colors.primary} size={55} />
 			)}
-			{confirm && (
-				<ConfirmModal
-					confirm={confirm}
-					handleModal={handleModal}
-					handleConfirm={onHandlerConfirmCart}
-				/>
-			)}
-		</View>
+		</>
 	);
 };
 
