@@ -7,5 +7,5 @@ export const useIsPortrait = () => {
 };
 
 export const useIsSmallDevice = () => {
-	return dim.height <= 690 && dim.width <= 360;
+	return dim.height <= 640 && dim.width <= 360;
 };

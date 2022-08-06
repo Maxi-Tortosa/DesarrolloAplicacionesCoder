@@ -32,6 +32,5 @@ export const styles = StyleSheet.create({
 	buttonIngresar: { marginTop: theme.margin.t - 5 },
 	buttonRegister: {
 		marginTop: theme.margin.t,
-		marginBottom: isSmallDevice && theme.margin.th,
 	},
 });

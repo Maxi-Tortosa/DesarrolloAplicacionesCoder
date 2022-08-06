@@ -32,7 +32,6 @@ const OrdersScreen = ({ navigation }) => {
 		}, 2000);
 	}, []);
 
-	console.log(orders);
 	return (
 		<>
 			{orders ? (
