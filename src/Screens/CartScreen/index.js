@@ -18,6 +18,7 @@ import { styles } from './styles';
 import theme from '../../../Constants/theme';
 
 const CartScreen = ({ navigation }) => {
+	const [pending, setPending] = useState(true);
 	const [confirm, setConfirm] = useState(false);
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.items);
@@ -42,6 +43,9 @@ const CartScreen = ({ navigation }) => {
 
 	useEffect(() => {
 		dispatch(getProducts());
+		setTimeout(() => {
+			setPending(false);
+		}, 2000);
 	}, [confirm]);
 
 	const renderItem = ({ item }) => (
@@ -64,22 +68,30 @@ const CartScreen = ({ navigation }) => {
 							data={cart}
 							renderItem={renderItem}
 							keyExtractor={(item) => item.id}
-							ListEmptyComponent={() => (
-								<>
-									<StyledText font='inter' style={styles.noProductsText}>
-										No existen artículos en tu carrito, animate y probá nuestros
-										productos
-									</StyledText>
-									<StyledButton
-										onPressEvent={handlePress}
-										style={{ marginTop: theme.margin.th }}
-										text='Hacé tu pedido ahora'
-										backgroundColor={theme.colors.lightGrey}
-										fontSize={theme.fontSize.titleS}
-										font='interBold'
+							ListEmptyComponent={() =>
+								!pending ? (
+									<>
+										<StyledText font='inter' style={styles.noProductsText}>
+											No existen pedidos realizados, animate y probá nuestros
+											productos
+										</StyledText>
+										<StyledButton
+											onPressEvent={handlePress}
+											style={{ marginTop: theme.margin.th }}
+											text='Hacé tu pedido ahora'
+											backgroundColor={theme.colors.lightGrey}
+											fontSize={theme.fontSize.titleS}
+											font='interBold'
+										/>
+									</>
+								) : (
+									<Loader
+										style={{ marginTop: theme.margin.f * 4 }}
+										color={theme.colors.primary}
+										size={55}
 									/>
-								</>
-							)}
+								)
+							}
 						/>
 					</View>
 					{cart.length > 0 && (

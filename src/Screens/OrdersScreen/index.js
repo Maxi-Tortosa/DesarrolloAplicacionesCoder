@@ -33,37 +33,39 @@ const OrdersScreen = ({ navigation }) => {
 	}, []);
 
 	return (
-		<>
-			{orders ? (
-				<SafeAreaView style={{ flex: 1 }}>
-					<View style={styles.container}>
-						<FlatList
-							data={orders}
-							renderItem={renderItem}
-							keyExtractor={(item) => item.id}
-							ListEmptyComponent={() => (
-								<>
-									<StyledText font='inter' style={styles.noProductsText}>
-										No existen pedidos realizados, animate y probá nuestros
-										productos
-									</StyledText>
-									<StyledButton
-										onPressEvent={handlePress}
-										style={{ marginTop: theme.margin.th }}
-										text='Hacé tu pedido ahora'
-										backgroundColor={theme.colors.lightGrey}
-										fontSize={theme.fontSize.titleS}
-										font='interBold'
-									/>
-								</>
-							)}
-						/>
-					</View>
-				</SafeAreaView>
-			) : (
-				<Loader color={theme.colors.primary} size={55} />
-			)}
-		</>
+		<SafeAreaView style={{ flex: 1 }}>
+			<View style={styles.container}>
+				<FlatList
+					data={orders}
+					renderItem={renderItem}
+					keyExtractor={(item) => item.id}
+					ListEmptyComponent={() =>
+						!pending ? (
+							<>
+								<StyledText font='inter' style={styles.noProductsText}>
+									No existen pedidos realizados, animate y probá nuestros
+									productos
+								</StyledText>
+								<StyledButton
+									onPressEvent={handlePress}
+									style={{ marginTop: theme.margin.th }}
+									text='Hacé tu pedido ahora'
+									backgroundColor={theme.colors.lightGrey}
+									fontSize={theme.fontSize.titleS}
+									font='interBold'
+								/>
+							</>
+						) : (
+							<Loader
+								style={{ marginTop: theme.margin.f * 4 }}
+								color={theme.colors.primary}
+								size={55}
+							/>
+						)
+					}
+				/>
+			</View>
+		</SafeAreaView>
 	);
 };
 
